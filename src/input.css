@@ -1,0 +1,143 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@font-face {
+  font-family: Avenic;
+  src: url('../assets/fonts/Avenic.otf') format('opentype');
+}
+body {
+  font-family: 'Avenic', sans-serif;
+}
+.align-element {
+  @apply max-w-6xl mx-auto px-5 sm:px-10;
+}
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+}
+/* Home */
+
+.navbar .navbar-menu li {
+  @apply text-[#B7B7B7] text-lg relative;
+}
+.navbar .navbar-menu li.active::after {
+  content: ''; /* Add content */
+  position: absolute; /* Position the pseudo-element */
+  bottom: -12px; /* Align at the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffc269;
+}
+.navbar .navbar-menu li.active {
+  @apply !text-primary;
+}
+.navbar .current-menu-item,
+.navbar .current-menu-ancestor {
+  @apply !text-primary;
+}
+
+.navbar .mobile-nav {
+  top: -500px;
+  transition: top 1s ease;
+}
+/* mobile */
+.navbar .mobile-navbar-menu li {
+  @apply text-[#B7B7B7] text-lg font-bold;
+}
+.navbar .mobile-navbar-menu li {
+  @apply relative;
+}
+.navbar .mobile-navbar-menu li.active::after {
+  content: ''; /* Add content */
+  position: absolute; /* Position the pseudo-element */
+  top: 50%; /* Align at the bottom */
+  right: -21px; /* Align horizontally */
+  transform: translateY(-50%); /* Center horizontally */
+  width: 10px; /* Width of the circle */
+  height: 10px; /* Height of the circle */
+  border-radius: 50%; /* Make it a circle */
+  background-color: #ffc269; /* Color of the circle */
+}
+.navbar .mobile-navbar-menu li.active a {
+  @apply !text-primary;
+}
+
+.navbar .mobile-nav .current-menu-item,
+.navbar .mobile-nav .current-menu-ancestor {
+  @apply !text-primary;
+}
+.navbar .mobile-nav.active {
+  top: 0;
+}
+.shape {
+  transform-origin: 0 100%;
+  transform: rotate(45deg) translateY(150px);
+}
+/* contact form */
+.msgContact-sucess {
+  display: none;
+}
+.msgContact-error {
+  display: none;
+}
+/* contact form */
+/* Swiper */
+.swiper-pagination > span {
+  width: 26px;
+  height: 5px;
+  border-radius: 0;
+}
+.mySwiper2 .swiper-slide:not(.swiper-slide-active) .box-img {
+  opacity: 0.7;
+}
+.mySwiper .swiperslide1 {
+  background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderHome4 (1).webp'),
+    url('<?php echo get_template_directory_uri(); ?>/assets/images/back2.svg'),
+    url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderhome2.webp');
+  background-size: contain, 400px auto, 700px auto;
+  background-position: top left, top right, top right;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  height: 100vh;
+}
+@media (max-width: 768px) {
+  .mySwiper .swiperslide1 {
+    background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderHome4 (1).webp'),
+      url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderhome2.webp');
+    background-size: 300px auto, 700px auto;
+    background-position: top left, top right;
+    background-repeat: no-repeat, no-repeat;
+    height: 100vh;
+  }
+}
+/* Home */
+
+/* scroll to top */
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  display: none;
+}
+/* Whattsapp */
+#whattapBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  display: block;
+}
+.mySwiper2 .content-ourClients p {
+  font-size: 28px;
+}
+@media (max-width: 64px) {
+  .mySwiper2 .content-ourClients p {
+    font-size: 18px;
+  }
+}
