@@ -1,34 +1,36 @@
 <?php wp_footer() ?>
-<footer
-  class="mt-10 sm:mt-15 bg-primary bg-gradient-to-r from-purple-600 via-purple-700 to-purple-500  py-3 sm:py-6  text-base-100"
-  id="footer">
-  <div class="max-w-[1400px] mx-auto px-5 sm:px-10 flex justify-center md:justify-between items-center gap-3">
-    <div class="flex justify-between gap-3 order-1 flex-1">
-      <div class="flex items-center gap-2 order-3">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/file.svg' alt="footerLogo">
-        <span class="text-[10px] md:text-sm">سجل تجاري 1010344677</span>
-      </div>
-      <div class="flex items-center gap-2 order-2">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/num.svg' alt="footerLogo">
-        <span class="text-[10px] md:text-sm">الرقم الضريبي 302167355900003</span>
-      </div>
-      <div class="w-28 block md:hidden order-1">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png' alt="footerLogo"
-          class="w-full h-full object-contain mx-auto">
-      </div>
-    </div>
-    <div class="w-28 h-auto md:h-[35px] order-2 hidden md:block flex-1">
-      <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png' alt="footerLogo"
-        class="w-full h-full object-contain">
-    </div>
-    <p class="hidden md:block order-3 flex-1 text-center">&copy; <span id="currentYear"></span> جميع الحقوق محفوظة</p>
-  </div>
 
-  <div class="mt-3">
-    <hr class="block md:hidden">
-    <p class="block md:hidden text-center mt-2">&copy; <span id="currentYear"></span> جميع الحقوق محفوظة</p>
+
+
+<footer class="bg-primary-100">
+  <div class="layout p-4 md:py-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <!-- Logo -->
+      <a href="<?php echo home_url(); ?>" class="sm:w-auto sm:h-auto">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/logo.png"
+          class="max-w-[200px] max-h-[60px] w-auto h-auto object-contain" alt="<?php bloginfo('name'); ?>" />
+      </a>
+
+      <!-- Navigation Links -->
+
+      <?php ahmed_bootstrap_footer(); ?>
+
+    </div>
+
+    <!-- Divider -->
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+
+    <!-- Copyright -->
+    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+
+      جميع الحقوق محفوظة
+      <a href="https://flowbite.com/" class="hover:underline"><?php bloginfo('name'); ?></a>
+      © 2025
+    </span>
   </div>
 </footer>
+
+
 </body>
 
 </html>

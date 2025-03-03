@@ -17,15 +17,7 @@
     <source src="<?php  echo esc_url($video['url']); ?>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <button
-    class="playButton absolute  left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-white border-none rounded-full  cursor-pointer">
-    <svg width="200" height="200" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M13.1266 8.92883L4.64377 13.8508C3.92387 14.2681 3 13.7628 3 12.9216V3.07765C3 2.23776 3.92254 1.73117 4.64377 2.14978L13.1266 7.07175C13.2903 7.16524 13.4265 7.30037 13.5211 7.46344C13.6158 7.62651 13.6657 7.81172 13.6657 8.00029C13.6657 8.18885 13.6158 8.37407 13.5211 8.53714C13.4265 8.70021 13.2903 8.83534 13.1266 8.92883Z"
-        fill="#fff" />
-    </svg>
 
-  </button>
 </div>
 
 <section class="layout my-10">

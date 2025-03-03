@@ -32,21 +32,7 @@ add_action('wp_footer', 'initlize_swiper');
   ** 7/1/2024
 */
 // Number Pagination
-function numbering_pagination(){
-  global $wp_query;
-  $all_pages = $wp_query->max_num_pages;
-  $current_page = max(1,get_query_var('paged'));
-  if($all_pages>1){
-    return paginate_links(array(
-        'base' => get_pagenum_link() . '%_%',
-        'format' => 'page/%#%',
-        'current'=> $current_page,
-        'mid_size' =>1,
-        'end_size' =>1
-    ));
-  }
 
-}
 function ahmed_custom_menu(){
       register_nav_menus(array(
         'bootstrap-menu' => ('الشريط العلوي'),
@@ -58,6 +44,13 @@ function ahmed_bootstrap_navbar(){
   wp_nav_menu(array(
      'theme_location' => 'bootstrap-menu',
      'menu_class' => 'navbar-menu flex gap-6',
+     'container' => ''
+  ));
+}
+function ahmed_bootstrap_footer(){
+  wp_nav_menu(array(
+     'theme_location' => 'footer-menu',
+     'menu_class' => 'flex flex-wrap items-center gap-3 mb-6 text-sm font-medium text-primary sm:mb-0',
      'container' => ''
   ));
 }
@@ -189,7 +182,7 @@ function falab_adjust_queries($query) {
 if (!is_admin() AND is_post_type_archive('experiment') AND $query->is_main_query()) {
 $query->set('orderby', 'title');
 $query->set('order', 'ASC');
-$query->set('posts_per_page', 1);
+$query->set('posts_per_page', 6);
 }
 
 

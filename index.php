@@ -75,8 +75,38 @@
          
          ?>
       </div>
-      <?php  echo paginate_links(); ?>
+      <nav aria-label="Page navigation example ">
+        <ul class="inline-flex -space-x-px text-sm mt-3 sm:mt-5">
+          <?php
+        global $wp_query;
 
+        $big = 999999999; // Need an unlikely integer
+        $pages = paginate_links(array(
+            'base'    => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format'  => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total'   => $wp_query->max_num_pages,
+            'prev_text' => __('Previous'),
+            'next_text' => __('Next'),
+            'type'    => 'array' // Returns an array of pagination links
+        ));
+
+        if (is_array($pages)) {
+            foreach ($pages as $page) {
+                echo '<li>' . str_replace(
+                    array('page-numbers current', 'page-numbers', 'prev', 'next'),
+                    array('flex items-center justify-center px-3 h-8 text-base-100 border border-gray-300 bg-primary',
+                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300  ',
+                          'flex items-center justify-center px-3 h-8 ms-0 leading-tight text-base-100 bg-primary border border-e-0 border-gray-300 rounded-s-lg ',
+                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300 rounded-e-lg '
+                    ),
+                    $page
+                ) . '</li>';
+            }
+        }
+        ?>
+        </ul>
+      </nav>
     </div>
 
 

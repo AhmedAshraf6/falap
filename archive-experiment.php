@@ -76,8 +76,8 @@
          
          ?>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul class="inline-flex -space-x-px text-sm">
+      <nav aria-label="Page navigation example ">
+        <ul class="inline-flex -space-x-px text-sm mt-3 sm:mt-5">
           <?php
         global $wp_query;
 
@@ -96,10 +96,10 @@
             foreach ($pages as $page) {
                 echo '<li>' . str_replace(
                     array('page-numbers current', 'page-numbers', 'prev', 'next'),
-                    array('flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
-                          'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-                          'flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-                          'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+                    array('flex items-center justify-center px-3 h-8 text-base-100 border border-gray-300 bg-primary',
+                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300  ',
+                          'flex items-center justify-center px-3 h-8 ms-0 leading-tight text-base-100 bg-primary border border-e-0 border-gray-300 rounded-s-lg ',
+                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300 rounded-e-lg '
                     ),
                     $page
                 ) . '</li>';
