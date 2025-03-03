@@ -1,4 +1,4 @@
- <a class="small-card border-b border-[#e1e1e1] pb-3" href="#0">
+ <a class="small-card border-b border-[#e1e1e1] pb-3" href="<?php the_permalink(); ?>">
    <div class="flex items-center gap-2">
      <img
        src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_theme_file_uri('/assets/images/default.jpg'); ?>"

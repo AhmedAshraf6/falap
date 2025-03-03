@@ -1,4 +1,4 @@
- <a href="javascript:void(0)">
+ <a href="<?php the_permalink(); ?>">
    <div class="relative flex flex-col bg-white shadow-sm border border-[#e1e1e1]  rounded-lg ">
      <div class="relative h-56  overflow-hidden text-white rounded-md">
        <img

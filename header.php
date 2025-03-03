@@ -15,7 +15,7 @@
 
 <body>
 
-  <div class="mx-5 flex justify-center headerContainer">
+  <div class="fixed bg-base-100 w-full z-[2] flex justify-center headerContainer">
     <nav
       class='navbar anaqidNavbar  w-full max-w-7xl  bg-base-100  rounded-2xl  flex justify-between items-center z-20 px-5 sm:px-10 py-5 '>
 

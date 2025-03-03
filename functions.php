@@ -18,7 +18,7 @@ function ahmed_add_styles() {
 }
 
 function ahmed_add_scripts() {
-  wp_enqueue_script('mainJs',get_template_directory_uri() . '/assets/js/main.js',array(),'1.2.7',true);
+  wp_enqueue_script('mainJs',get_template_directory_uri() . '/assets/js/main.js',array(),'1.2.8',true);
 }
 function initlize_swiper(){
   ?>
