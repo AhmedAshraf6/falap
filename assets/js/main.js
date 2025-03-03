@@ -184,12 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         video.controls = false; 
         const playIcon = `
-            <svg width="100" height="100" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-[50px] h-[50px] md::w-[100px] md:h-[100px]" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.1266 8.92883L4.64377 13.8508C3.92387 14.2681 3 13.7628 3 12.9216V3.07765C3 2.23776 3.92254 1.73117 4.64377 2.14978L13.1266 7.07175C13.2903 7.16524 13.4265 7.30037 13.5211 7.46344C13.6158 7.62651 13.6657 7.81172 13.6657 8.00029C13.6657 8.18885 13.6158 8.37407 13.5211 8.53714C13.4265 8.70021 13.2903 8.83534 13.1266 8.92883Z" fill="#fff"/>
             </svg>`;
 
         const pauseIcon = `
-            <svg width="100" height="100" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-[50px] h-[50px] md::w-[100px] md:h-[100px]" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 1.5L1 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
                 <path d="M9 1.5L9 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
             </svg>`;

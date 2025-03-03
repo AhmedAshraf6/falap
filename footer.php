@@ -13,12 +13,12 @@
         <span class="text-[10px] md:text-sm">الرقم الضريبي 302167355900003</span>
       </div>
       <div class="w-28 block md:hidden order-1">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/footerLogo.svg' alt="footerLogo"
+        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png' alt="footerLogo"
           class="w-full h-full object-contain mx-auto">
       </div>
     </div>
     <div class="w-28 h-auto md:h-[35px] order-2 hidden md:block flex-1">
-      <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/footerLogo.svg' alt="footerLogo"
+      <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.png' alt="footerLogo"
         class="w-full h-full object-contain">
     </div>
     <p class="hidden md:block order-3 flex-1 text-center">&copy; <span id="currentYear"></span> جميع الحقوق محفوظة</p>

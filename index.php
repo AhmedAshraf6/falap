@@ -10,7 +10,8 @@
   <div class="grid lg:grid-cols-4 gap-5">
 
     <div class="lg:col-span-1">
-      <form method="get" action="/" class="mx-auto border border-gray rounded-lg p-3">
+      <form method="get" action="<?php echo esc_url(site_url('/')); ?>"
+        class="mx-auto border border-gray rounded-lg p-3">
         <label for="default-search"
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
           البحث عن مدونة
@@ -28,13 +29,13 @@
               </svg>
             </button>
           </div>
-          <input type="text" id="default-search"
+          <input name="s" type="text" id="default-search"
             class="block w-full p-4 ps-4 text-sm text-gray-900 border border-gray rounded-lg bg-gray-50 outline-none focus:ring-primary focus:border-primary"
             placeholder="ابحث هنا..." required />
 
         </div>
       </form>
-      <aside class="border border-gray rounded-lg p-3 mt-3 sm:mt-5">
+      <aside class="border border-gray rounded-lg p-3 mt-3 sm:mt-5 hidden lg:block">
         <span
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
           آخر الأخبار

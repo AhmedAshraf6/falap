@@ -177,7 +177,7 @@ function pageBanner($args = NULL) {
   style="background-image: url(<?php echo $args['photo']; ?>);">
   <div class='overlay absolute w-full h-full top-0 left-0 bg-primary opacity-90'></div>
   <div class='layout absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[50%] text-base-100'>
-    <h3 class='text-5xl font-bold capitalize z-20' data-aos='fade-up' data-aos-duration='1000'>
+    <h3 class='text-2xl sm:text-5xl font-bold capitalize z-20' data-aos='fade-up' data-aos-duration='1000'>
       <?php echo $args['title'] ?>
     </h3>
 
@@ -189,7 +189,7 @@ function falab_adjust_queries($query) {
 if (!is_admin() AND is_post_type_archive('experiment') AND $query->is_main_query()) {
 $query->set('orderby', 'title');
 $query->set('order', 'ASC');
-$query->set('posts_per_page', 3);
+$query->set('posts_per_page', 1);
 }
 
 
