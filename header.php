@@ -14,16 +14,16 @@
 </head>
 
 <body>
-  <!-- max-w-4xl mx-auto -->
 
-  <div class="mx-5 relative headerContainer">
+  <div class="mx-5 flex justify-center headerContainer">
     <nav
-      class='navbar anaqidNavbar  bg-base-100 max-w-6xl rounded-2xl flex justify-between items-center  w-full z-20 absolute left-1/2 -translate-x-1/2  top-5 px-5 sm:px-10 py-5 '>
+      class='navbar anaqidNavbar  w-full max-w-7xl  bg-base-100  rounded-2xl  flex justify-between items-center z-20 px-5 sm:px-10 py-5 '>
 
-      <a href="/" rel="home" class="w-28  sm:w-auto sm:h-auto">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg'
-          class="w-full h-full object-contain">
+      <a href="<?php echo site_url() ?>" rel="home" class="sm:w-auto sm:h-auto">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/logo.png"
+          class="max-w-[200px] max-h-[60px] w-auto h-auto object-contain">
       </a>
+
 
 
       <div class='hidden lg:block navUl'>
@@ -35,10 +35,10 @@
         class='lg:hidden mobile-nav  fixed top-0 z-20 bg-base-100 flex flex-col items-start py-3 px-5 min-h-[40vh] min-w-[90vw] sm:min-w-[400px] left-1/2 -translate-x-1/2 rounded-xl'>
         <div class="flex justify-between gap-3 items-center w-full">
 
-          <a href="/" rel="home" class="w-36 ">
+          <!-- <a href="/" rel="home" class="w-36 ">
             <img src='<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg'
               class="w-full h-full object-contain">
-          </a>
+          </a> -->
           <button class='lg:hidden hide-nav text-base-100 '><img
               src='<?php echo get_template_directory_uri(); ?>/assets/images/delete.svg' alt=""></button>
 

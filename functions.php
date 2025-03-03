@@ -14,11 +14,11 @@
   ** 6/1/2024
 */
 function ahmed_add_styles() {
-  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.6');
+  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.8');
 }
 
 function ahmed_add_scripts() {
-  wp_enqueue_script('mainJs',get_template_directory_uri() . '/assets/js/main.js',array(),'1.2.6',true);
+  wp_enqueue_script('mainJs',get_template_directory_uri() . '/assets/js/main.js',array(),'1.2.7',true);
 }
 function initlize_swiper(){
   ?>
@@ -93,79 +93,45 @@ add_action('wp_enqueue_scripts','ahmed_add_styles');
 add_action('wp_enqueue_scripts','ahmed_add_scripts');
 add_action('init','ahmed_custom_menu');
 
-
-  // add_action( 'phpmailer_init', 'my_phpmailer_smtp' );
-  // function my_phpmailer_smtp( $phpmailer ) {
-  //     $phpmailer->isSMTP();     
-  //     $phpmailer->Host ='smtp.gmail.com' ;  
-  //     $phpmailer->SMTPAuth =true ;
-  //     $phpmailer->Port = 587;
-  //     $phpmailer->Username = 'fghffgg767676@gmail.com';
-  //     $phpmailer->Password = 'Ahmed767676';
-  //     $phpmailer->SMTPSecure = 'tls';
-  //     $phpmailer->From = 'fghffgg767676@gmail.com';
-  //     $phpmailer->FromName = 'شركة عناقيد الرائدة';
-  // }
-
-// regsiter function
-// function myMainSidebar(){
-  
-//   register_sidebar(array(
-//     'name' => 'Main Sidebar',
-//     'id' => 'main-sidebar',
-//     'description' => 'in every where',
-//     'class' =>'main-sidebar',
-//     'before_widget' => '<div class="widget-content">',
-//     'after_widget' => '</div>',
-//     'before_title' => '<h3 class="widget-title"',
-//     'after_title' =>'</h3>'
-//   ));
-// }
-// add_action('widgets_init','myMainSidebar');
-
-/*
-	==========================================
-	 Custom Post Type
-	==========================================
-*/
-function awesome_custom_post_type (){
-	
-	$labels = array(
-		'name' => 'عملاء عناقيد',
-		'singular_name' => 'anaqidClients',
-		'add_new' => 'اضافة رأي',
-		'all_items' => 'جميع الاراء',
-		'add_new_item' => 'اضافة رأي',
-		'edit_item' => 'تعديل رأي',
-		'new_item' => 'اضافة رأي',
-		'view_item' => 'مشاهدة رأي',
-		'search_item' => 'البحث في الاراء',
-		'not_found' => 'No items found',
-		'not_found_in_trash' => 'No items found in trash',
+function awesome_custom_post_type() {
+  	$labels = array(
+		'name' => 'التجارب العملية',
+		'singular_name' => 'falapExperiments',
+		'add_new' => 'اضافة تجربة',
+		'all_items' => 'جميع التجارب',
+		'add_new_item' => 'اضافة تجربة',
+		'edit_item' => 'تعديل تجربة',
+		'new_item' => 'اضافة تجربة',
+		'view_item' => 'مشاهدة تجربة',
+		'search_item' => 'البحث في االتجارب',
+		'not_found' => 'لم يتم ايجاد تجارب',
+		'not_found_in_trash' => 'لم يتم ايجاد شئ ف السلة',
 		'parent_item_colon' => 'Parent Item'
 	);
-	$args = array(
-		'labels' => $labels,
-		'public' => true,
-		'has_archive' => true,
-		'publicly_queryable' => true,
-		'query_var' => true,
-		'rewrite' => true,
-		'capability_type' => 'post',
-		'hierarchical' => false,
-		'supports' => array(
-			'title',
-			'editor',
-			'excerpt',
-			'thumbnail',
-		),
-		//'taxonomies' => array('category', 'post_tag'),
-		'menu_position' => 5,
-		'exclude_from_search' => false
-	);
-	register_post_type('anaqidClients',$args);
+    register_post_type('experiment',
+        array(
+            'labels'      => $labels,
+            'public'      => true,
+            'has_archive' => true,
+            'show_in_rest' => true,
+            'menu_icon'   => 'dashicons-lightbulb',
+            'supports'    => array('title', 'editor', 'thumbnail'),
+            'rewrite'     => array('slug' => 'experiments'),
+        )
+    );
 }
-add_action('init','awesome_custom_post_type');
+
+add_action('init', 'awesome_custom_post_type');
+function add_experiment_columns($columns) {
+    $new_columns = array();
+    $new_columns['cb'] = $columns['cb']; // Checkbox
+    $new_columns['title'] = 'Experiment Name'; // Title column
+
+    return $new_columns;
+}
+add_filter('manage_experiment_posts_columns', 'add_experiment_columns');
+
+
 
 
 
@@ -187,3 +153,46 @@ function custom_columns_data( $column, $post_id ) {
     }
 }
 add_action( 'manage_posts_custom_column' , 'custom_columns_data', 10, 2 ); 
+
+
+// new functions
+function pageBanner($args = NULL) {
+  
+ if (!isset($args['title'])) {
+    $args['title'] = get_the_title();
+  }
+
+
+  if (!isset($args['photo'])) {
+    if (get_field('page_banner_background_image') AND !is_archive() AND !is_home()) {
+      $args['photo'] = get_field('page_banner_background_image')['url'];
+    } else {
+      $args['photo'] = get_theme_file_uri('/assets/images/banner.jpg');
+    }
+  }
+
+  ?>
+
+<section class='h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center'
+  style="background-image: url(<?php echo $args['photo']; ?>);">
+  <div class='overlay absolute w-full h-full top-0 left-0 bg-primary opacity-90'></div>
+  <div class='layout absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[50%] text-base-100'>
+    <h3 class='text-5xl font-bold capitalize z-20' data-aos='fade-up' data-aos-duration='1000'>
+      <?php echo $args['title'] ?>
+    </h3>
+
+  </div>
+</section>
+<?php }
+
+function falab_adjust_queries($query) {
+if (!is_admin() AND is_post_type_archive('experiment') AND $query->is_main_query()) {
+$query->set('orderby', 'title');
+$query->set('order', 'ASC');
+$query->set('posts_per_page', 3);
+}
+
+
+}
+
+add_action('pre_get_posts','falab_adjust_queries');

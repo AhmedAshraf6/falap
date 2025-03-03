@@ -1,7 +1,7 @@
 <?php
  get_header();
  pageBanner(array(
-  'title' => 'المدونة'
+  'title' => 'التجارب العملية'
  ));
 ?>
 
@@ -13,7 +13,7 @@
       <form method="get" action="/" class="mx-auto border border-gray rounded-lg p-3">
         <label for="default-search"
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
-          البحث عن مدونة
+          البحث عن التجارب
         </label>
 
 
@@ -37,13 +37,15 @@
       <aside class="border border-gray rounded-lg p-3 mt-3 sm:mt-5">
         <span
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
-          آخر الأخبار
+          أحدث التجارب
         </span>
         <div class="flex flex-col gap-3 lg:gap-5 mt-3 sm:mt-5">
           <?php 
          $homepageEvents = new WP_Query(array(
               'posts_per_page' => 3,
-       
+              'post_type'      => 'experiment',
+              'orderby'        => 'date',
+              'order'          => 'DESC', // Newest posts first
           ));
 
 
@@ -65,10 +67,9 @@
         <?php
               while(have_posts()) {
                 the_post();
-                get_template_part('template-parts/content','post');
+                get_template_part('template-parts/content','experiment');
 
                 ?>
-
 
         <?php }
          

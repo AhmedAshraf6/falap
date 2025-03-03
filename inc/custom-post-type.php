@@ -27,9 +27,9 @@
 /* CONTACT CPT */
 function sunset_contact_custom_post_type() {
 	$labels = array(
-		'name' 				=> 'رسائل عناقيد',
+		'name' 				=> 'رسائل فيلاب',
 		'singular_name' 	=> 'رسالة',
-		'menu_name'			=> 'رسائل عناقيد',
+		'menu_name'			=> 'رسائل فيلاب',
 		'name_admin_bar'	=> 'رسالة'
 	);
 	

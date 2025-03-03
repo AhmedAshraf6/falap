@@ -15,124 +15,92 @@ mobileNav.addEventListener('click', (e) => {
 
 // Contact Form Submition
 const contactForm = document.getElementById('anaqidContactForm');
-contactForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const name = this.querySelector('[name="name"]'),
-    email = this.querySelector('[name="email"]'),
-    message = this.querySelector('[name="message"]'),
-    phoneNumber = this.querySelector('[name="phone"]'),
-    messageSuccess = document.querySelector('.msgContact-sucess'),
-    messageError = document.querySelector('.msgContact-error'),
-    btnSubmit = document.querySelector('.contactSubmit'),
-    urlAjax = this.getAttribute('data-url');
-
-  const nameValue = name.value,
-    emaiValue = email.value,
-    phoneValue = phoneNumber.value,
-    messageValue = message.value;
-
-  btnSubmit.disabled = true;
-  btnSubmit.textContent = 'جاري الارسال ..';
-  if (!nameValue || !emaiValue || !phoneValue || !messageValue) {
-    console.log('empty data');
-    name.style.border = '1px solid red';
-    email.style.border = '1px solid red';
-    message.style.border = '1px solid red';
-    return;
-  }
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', urlAjax, true);
-  xhr.setRequestHeader(
-    'Content-Type',
-    'application/x-www-form-urlencoded; charset=UTF-8'
-  );
-
-  xhr.onload = function () {
-    document.querySelector('[name="name"]').value = '';
-    document.querySelector('[name="email"]').value = '';
-    document.querySelector('[name="message"]').value = '';
-    document.querySelector('[name="phone"]').value = '';
-    if (xhr.status >= 200 && xhr.status < 400) {
-      messageSuccess.style.display = 'block';
-      setTimeout(() => {
-        messageSuccess.style.display = 'none';
-      }, 5000);
-    } else {
+if(contactForm){
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = this.querySelector('[name="name"]'),
+      email = this.querySelector('[name="email"]'),
+      message = this.querySelector('[name="message"]'),
+      phoneNumber = this.querySelector('[name="phone"]'),
+      messageSuccess = document.querySelector('.msgContact-sucess'),
+      messageError = document.querySelector('.msgContact-error'),
+      btnSubmit = document.querySelector('.contactSubmit'),
+      urlAjax = this.getAttribute('data-url');
+  
+    const nameValue = name.value,
+      emaiValue = email.value,
+      phoneValue = phoneNumber.value,
+      messageValue = message.value;
+  
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'جاري الارسال ..';
+    if (!nameValue || !emaiValue || !phoneValue || !messageValue) {
+      console.log('empty data');
+      name.style.border = '1px solid red';
+      email.style.border = '1px solid red';
+      message.style.border = '1px solid red';
+      return;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', urlAjax, true);
+    xhr.setRequestHeader(
+      'Content-Type',
+      'application/x-www-form-urlencoded; charset=UTF-8'
+    );
+  
+    xhr.onload = function () {
+      document.querySelector('[name="name"]').value = '';
+      document.querySelector('[name="email"]').value = '';
+      document.querySelector('[name="message"]').value = '';
+      document.querySelector('[name="phone"]').value = '';
+      if (xhr.status >= 200 && xhr.status < 400) {
+        messageSuccess.style.display = 'block';
+        setTimeout(() => {
+          messageSuccess.style.display = 'none';
+        }, 5000);
+      } else {
+        messageError.style.display = 'block';
+        setTimeout(() => {
+          messageError.style.display = 'none';
+        }, 5000);
+      }
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'ارسال';
+    };
+  
+    xhr.onerror = function () {
       messageError.style.display = 'block';
       setTimeout(() => {
         messageError.style.display = 'none';
       }, 5000);
-    }
-    btnSubmit.disabled = false;
-    btnSubmit.textContent = 'ارسال';
-  };
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'ارسال';
+    };
+  
+    // Construct the data to be sent
+    var data =
+      'action=sunset_save_user_contact_form&name=' +
+      encodeURIComponent(nameValue) +
+      '&email=' +
+      encodeURIComponent(emaiValue) +
+      '&phone=' +
+      encodeURIComponent(phoneValue) +
+      '&message=' +
+      encodeURIComponent(messageValue);
+    // Add any other data you want to send
+  
+    // Send the request
+    xhr.send(data);
+  });
 
-  xhr.onerror = function () {
-    messageError.style.display = 'block';
-    setTimeout(() => {
-      messageError.style.display = 'none';
-    }, 5000);
-    btnSubmit.disabled = true;
-    btnSubmit.textContent = 'ارسال';
-  };
-
-  // Construct the data to be sent
-  var data =
-    'action=sunset_save_user_contact_form&name=' +
-    encodeURIComponent(nameValue) +
-    '&email=' +
-    encodeURIComponent(emaiValue) +
-    '&phone=' +
-    encodeURIComponent(phoneValue) +
-    '&message=' +
-    encodeURIComponent(messageValue);
-  // Add any other data you want to send
-
-  // Send the request
-  xhr.send(data);
-});
-
-//Get the button
-let mybutton = document.getElementById('btn-back-to-top');
-
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = 'block';
-  } else {
-    mybutton.style.display = 'none';
-  }
 }
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener('click', backToTop);
 
-function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+
+
+
 
 // change icon of arrow in footer
-window.addEventListener('scroll', function () {
-  const footerSection = document.getElementById('footer');
-  const footer = document.getElementById('btn-back-to-top');
-  const arrowUpImage = footer.querySelector('img');
 
-  const footerPosition = footerSection.getBoundingClientRect();
-
-  if (footerPosition.top < window.innerHeight) {
-    if (imageSrc) {
-      arrowUpImage.src = `${imageSrc}/assets/images/arrowup2.svg`;
-      footer.style.backgroundColor = '#F9F5FF';
-    }
-  } else {
-    arrowUpImage.src = `${imageSrc}/assets/images/arrowup.svg`;
-    footer.style.backgroundColor = '#401F92';
-  }
-});
 
 // make stick nav
 const stickyElement = document.querySelector('.anaqidNavbar');
@@ -143,7 +111,7 @@ window.addEventListener('scroll', function () {
     stickyElement.style.position = 'fixed';
     stickyElement.style.top = '0';
   } else {
-    stickyElement.style.position = 'absolute';
+    stickyElement.style.position = 'static';
     stickyElement.style.top = '0';
   }
 });

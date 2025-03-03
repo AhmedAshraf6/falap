@@ -8,8 +8,8 @@
 body {
   font-family: 'Avenic', sans-serif;
 }
-.align-element {
-  @apply max-w-6xl mx-auto px-5 sm:px-10;
+.layout {
+  @apply max-w-7xl mx-auto px-5 sm:px-10;
 }
 html {
   overflow-x: hidden;
@@ -18,6 +18,14 @@ html {
 body {
   overflow-x: hidden;
 }
+.btn-primary {
+  @apply self-start bg-[#324846] text-center rounded-3xl py-2 px-10 text-base-100 font-bold w-[194px] sm:w-[208px] mx-auto sm:mx-0;
+}
+
+.btn-primary:disabled {
+  @apply bg-[#cdc6c6];
+}
+
 /* Home */
 
 .navbar .navbar-menu li {
@@ -88,33 +96,17 @@ body {
 }
 /* contact form */
 /* Swiper */
-.swiper-pagination > span {
-  width: 26px;
-  height: 5px;
-  border-radius: 0;
+.swiper-pagination .swiper-pagination-bullet {
+  @apply border-2 w-[15px] h-[15px] rounded-full  opacity-50 border-primary transition-all duration-300;
 }
-.mySwiper2 .swiper-slide:not(.swiper-slide-active) .box-img {
-  opacity: 0.7;
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: transparent !important;
 }
-.mySwiper .swiperslide1 {
-  background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderHome4 (1).webp'),
-    url('<?php echo get_template_directory_uri(); ?>/assets/images/back2.svg'),
-    url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderhome2.webp');
-  background-size: contain, 400px auto, 700px auto;
-  background-position: top left, top right, top right;
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  height: 100vh;
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  @apply !bg-primary opacity-100 w-[15px] h-[15px];
 }
-@media (max-width: 768px) {
-  .mySwiper .swiperslide1 {
-    background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderHome4 (1).webp'),
-      url('<?php echo get_template_directory_uri(); ?>/assets/images/sliderhome2.webp');
-    background-size: 300px auto, 700px auto;
-    background-position: top left, top right;
-    background-repeat: no-repeat, no-repeat;
-    height: 100vh;
-  }
-}
+
 /* Home */
 
 /* scroll to top */
