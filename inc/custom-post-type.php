@@ -40,7 +40,7 @@ function sunset_contact_custom_post_type() {
 		'capability_type'	=> 'post',
 		'hierarchical'		=> false,
 		'menu_position'		=> 26,
-		'menu_icon'			=> get_template_directory_uri() . '/assets/images/logo.png',
+		'menu_icon'			=> 'dashicons-phone',
 		'supports'			=> array( 'title', 'editor', 'author' )
 	);
 	

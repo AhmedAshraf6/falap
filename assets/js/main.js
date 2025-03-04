@@ -35,7 +35,6 @@ if(contactForm){
     btnSubmit.disabled = true;
     btnSubmit.textContent = 'جاري الارسال ..';
     if (!nameValue || !emaiValue || !phoneValue || !messageValue) {
-      console.log('empty data');
       name.style.border = '1px solid red';
       email.style.border = '1px solid red';
       message.style.border = '1px solid red';
@@ -171,14 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // handle form submission
-function handleFormSubmission(){
-const forms = document.querySelectorAll('.experimentForm');
+function handleFormSubmission() {
+    const forms = document.querySelectorAll('.experimentForm');
 
     forms.forEach(function(form) {
         form.addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent page reload
 
             const formData = new FormData(form);
+
+            // Validate files before submission
+            if (!validateFiles(formData)) {
+                return; // Stop submission if validation fails
+            }
+
             formData.append('action', 'handle_experiment_submission');
 
             try {
@@ -199,6 +204,54 @@ const forms = document.querySelectorAll('.experimentForm');
             }
         });
     });
+
+  function validateFiles(formData) {
+    const MAX_IMAGE_SIZE_MB = 10;
+    const MAX_VIDEO_SIZE_MB = 40;
+    const MAX_DOC_SIZE_MB = 5;
+
+    const IMAGE_EXTENSIONS = ['png', 'jpeg', 'jpg', 'gif'];
+    const VIDEO_EXTENSIONS = ['mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv'];
+    const DOC_EXTENSIONS = ['pdf', 'doc', 'docx'];
+
+    for (let [key, file] of formData.entries()) {
+        if (file instanceof File) {
+            // Skip empty files
+            if (file.size === 0) {
+                continue;
+            }
+
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+            const fileSizeMB = file.size / (1024 * 1024);
+
+            if (IMAGE_EXTENSIONS.includes(fileExtension)) {
+                if (fileSizeMB > MAX_IMAGE_SIZE_MB) {
+                    showToast(`حجم الصورة "${file.name}" يتجاوز الحد الأقصى المسموح به وهو ${MAX_IMAGE_SIZE_MB} ميجابايت.`, '#fef2f2', '#991b1b');
+                    return false;
+                }
+            } else if (VIDEO_EXTENSIONS.includes(fileExtension)) {
+                if (fileSizeMB > MAX_VIDEO_SIZE_MB) {
+                    showToast(`حجم الفيديو "${file.name}" يتجاوز الحد الأقصى المسموح به وهو ${MAX_VIDEO_SIZE_MB} ميجابايت.`, '#fef2f2', '#991b1b');
+                    return false;
+                }
+           
+            } else if (DOC_EXTENSIONS.includes(fileExtension)) {
+                if (fileSizeMB > MAX_DOC_SIZE_MB) {
+                    showToast(`حجم الملف "${file.name}" يتجاوز الحد الأقصى المسموح به وهو ${MAX_DOC_SIZE_MB} ميجابايت.`, '#fef2f2', '#991b1b');
+                    return false;
+                }
+            } else {
+                showToast(`نوع الملف "${file.name}" غير مدعوم.`, '#fef2f2', '#991b1b');
+                return false;
+            }
+        }
+    }
+    return true;
+  }
+
+
+
+
     function showToast(message, colorBg, colorText) {
         const toast = document.getElementById('toastMessage');
         toast.textContent = message;
@@ -216,6 +269,7 @@ const forms = document.querySelectorAll('.experimentForm');
     }
 }
 
+
 // this handle uplad experiment 
 
   const   fileInputImage = document.getElementById('file-upload')
@@ -224,7 +278,6 @@ const forms = document.querySelectorAll('.experimentForm');
     fileInputImage.addEventListener('change', function (event) {
       const file = event.target.files[0];
     const imagePreviewContainer = document.getElementById('image-preview');
-  
       if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {

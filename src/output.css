@@ -808,6 +808,9 @@ video {
 .min-w-\[90vw\] {
   min-width: 90vw;
 }
+.min-w-20 {
+  min-width: 5rem;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -1735,6 +1738,16 @@ body {
   .lg\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 @media (prefers-color-scheme: dark) {

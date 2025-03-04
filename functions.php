@@ -95,6 +95,7 @@ add_action('wp_enqueue_scripts','ahmed_add_styles');
 add_action('init','ahmed_custom_menu');
 
 function awesome_custom_post_type() {
+    // experiment 
   	$labels = array(
 		'name' => 'التجارب العملية',
 		'singular_name' => 'falapExperiments',
@@ -116,44 +117,44 @@ function awesome_custom_post_type() {
             'has_archive' => true,
             'show_in_rest' => true,
             'menu_icon'   => 'dashicons-lightbulb',
-            'supports'    => array('title', 'editor', 'thumbnail'),
+            'supports'    => array('title', 'editor', 'thumbnail','excerpt'),
             'rewrite'     => array('slug' => 'experiments'),
+        )
+    );
+    // library 
+  	$labels2 = array(
+		'name' => 'المكتبة العلمية',
+		'singular_name' => 'falapLibrary',
+		'add_new' => 'اضافة عنصر',
+		'all_items' => 'جميع العناصر',
+		'add_new_item' => 'اضافة عنصر',
+		'edit_item' => 'تعديل عنصر',
+		'new_item' => 'اضافة عنصر',
+		'view_item' => 'مشاهدة عنصر',
+		'search_item' => 'البحث في المكتبة',
+		'not_found' => 'لم يتم ايجاد عنصر',
+		'not_found_in_trash' => 'لم يتم ايجاد شئ ف السلة',
+		'parent_item_colon' => 'Parent Item'
+	);
+    register_post_type('library',
+        array(
+            'labels'      => $labels2,
+            'public'      => true,
+            'has_archive' => true,
+            'show_in_rest' => true,
+            'menu_icon'   => 'dashicons-book',
+            'supports'    => array('title', 'editor', 'thumbnail','excerpt'),
+            'rewrite'     => array('slug' => 'libraries'),
+
         )
     );
 }
 
 add_action('init', 'awesome_custom_post_type');
-function add_experiment_columns($columns) {
-    $new_columns = array();
-    $new_columns['cb'] = $columns['cb']; // Checkbox
-    $new_columns['title'] = 'Experiment Name'; // Title column
-
-    return $new_columns;
-}
-add_filter('manage_experiment_posts_columns', 'add_experiment_columns');
 
 
 
 
-
-function custom_columns( $columns ) {
-    $columns = array(
-        'cb' => '<input type="checkbox" />',
-        'featured_image' => 'Image',
-        'date' => 'Date'
-     );
-    return $columns;
-}
-add_filter('manage_posts_columns' , 'custom_columns');
-
-function custom_columns_data( $column, $post_id ) {
-    switch ( $column ) {
-    case 'featured_image':
-        the_post_thumbnail( 'thumbnail' );
-        break;
-    }
-}
-add_action( 'manage_posts_custom_column' , 'custom_columns_data', 10, 2 ); 
 
 
 // new functions

@@ -1,24 +1,14 @@
 <?php
  get_header();
-                $video = get_field('experiment_video');
-                $category = get_field('experiment_category');
-                $purpose = get_field('experiment_purpose');
-                $tools = get_field('experiment_tool');
-                $steps = get_field('experiment_steps');
-                $image = get_field('experiment_image');
-                $reports = get_field('experiment_reports');
+ pageBanner();
+                $category = get_field('library_select');
+                
+                $reports = get_field('library_file');
  
 ?>
 
 
 
-<div class="video-box h-[50vh] lg:h-[80vh] relative ">
-  <video controls class="w-full h-full myVideo object-cover">
-    <source src="<?php  echo esc_url($video['url']); ?>" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-</div>
 
 <section class="layout my-10">
 
@@ -29,7 +19,7 @@
         class="mx-auto border border-gray rounded-lg p-3">
         <label for="default-search"
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
-          البحث عن التجارب
+          البحث
         </label>
 
 
@@ -53,13 +43,13 @@
       <aside class="border border-gray rounded-lg p-3 mt-3 sm:mt-5 hidden lg:block">
         <span
           class="text-md lg:text-lg font-medium text-gray-900 relative after:block after:w-[30px] after:h-[4px] after:bg-primary after:mt-2">
-          أحدث التجارب
+          أحدث الاضافات
         </span>
         <div class="flex flex-col gap-3 lg:gap-5 mt-3 sm:mt-5">
           <?php 
          $homepageEvents = new WP_Query(array(
               'posts_per_page' => 3,
-              'post_type'      => 'experiment',
+              'post_type'      => 'library',
               'orderby'        => 'date',
               'order'          => 'DESC', // Newest posts first
           ));
@@ -80,31 +70,10 @@
     <div class="lg:col-span-3">
       <div class="flex flex-col gap-5 sm:gap-9">
 
-        <div class="flex flex-col gap-2">
-          <h3 class="text-2xl lg:text-4xl font-bold text-primary"><?php the_title(); ?></h3>
-        </div>
-
-        <?php if($purpose){ ?>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-xl lg:text-3xl font-bold text-primary">الهدف من التجربة :</h3>
-          <p class="text-lg leading-10 "><strong><?php echo $purpose ?></strong></p>
-        </div>
-        <?php }?>
-
-        <?php if($tools){ ?>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-xl lg:text-3xl font-bold text-primary">الأدوات :</h3>
-          <p class="text-lg leading-10 "><strong><?php echo $tools ?></strong></p>
-        </div>
-        <?php }?>
-
-        <?php if($steps){ ?>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-xl lg:text-3xl font-bold text-primary">الخطوات :</h3>
-          <p class="text-lg leading-10 "><strong><?php echo $steps ?></strong></p>
-        </div>
-        <?php }?>
-
+        <img
+          src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_theme_file_uri('/assets/images/default.jpg'); ?>"
+          alt="<?php the_title_attribute(); ?>" class="w-full max-h-[400px] sm:max-h-[500px] object-cover rounded-lg ">
+        <p><?php the_content() ?></p>
         <?php
         if (!empty($reports) && isset($reports['url'])) {?>
         <div class="flex flex-col gap-2">
