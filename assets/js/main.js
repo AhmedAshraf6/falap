@@ -171,37 +171,126 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // handle form submission
-function handleFormSubmission() {
-    const form = document.getElementById("experimentForm");
+function handleFormSubmission(){
+const forms = document.querySelectorAll('.experimentForm');
 
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent page reload
+    forms.forEach(function(form) {
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent page reload
 
-        const formData = new FormData(form);
+            const formData = new FormData(form);
+            formData.append('action', 'handle_experiment_submission');
 
-        try {
-            const response = await axios.post('<?php echo admin_url("admin-ajax.php"); ?>', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
+            try {
+                const response = await axios.post(experimentAjax.ajaxurl, formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                });
 
-            if (response.data.success) {
-                showToast(response.data.data.message, 'green'); // Success
-                form.reset(); // Reset form
-            } else {
-                showToast(response.data.data.message, 'red'); // Error
+                if (response.data.success) {
+                    showToast(response.data.data.message, '#f0fdf4', '#166534'); // Success
+                    form.reset();
+                    clearVideoPreview(true);
+                    clearImagePreview(true);
+                } else {
+                    showToast(response.data.data.message, '#fef2f2', '#991b1b'); // Error
+                }
+            } catch (error) {
+                showToast('حدث خطأ ما من فضلك حاول مرة أخري', '#fef2f2', '#991b1b');
             }
-        } catch (error) {
-            showToast('An error occurred. Please try again.', 'red');
-        }
+        });
     });
-
-    function showToast(message, color) {
-        const toast = document.getElementById("toastMessage");
+    function showToast(message, colorBg, colorText) {
+        const toast = document.getElementById('toastMessage');
         toast.textContent = message;
-        toast.classList.remove("hidden");
-        toast.style.backgroundColor = color;
-        setTimeout(() => toast.classList.add("hidden"), 3000);
+        toast.classList.remove('hidden');
+        toast.style.backgroundColor = colorBg;
+        toast.style.color = colorText;
+        toast.style.transition = 'opacity 0.5s ease-in-out'; // Smooth fade
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.style.opacity = '1';
+            }, 500);
+        }, 3000);
     }
 }
 
+// this handle uplad experiment 
 
+  const   fileInputImage = document.getElementById('file-upload')
+  const previewImage = document.getElementById('preview-img');
+  if(fileInputImage){
+    fileInputImage.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+    const imagePreviewContainer = document.getElementById('image-preview');
+  
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          imagePreviewContainer.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+      clearImagePreview(false);
+    });
+  }
+function clearImagePreview (clicked){
+  const removeButton = document.getElementById('remove-btn');
+  const imagePreviewContainer = document.getElementById('image-preview');
+
+   if(clicked){
+    fileInputImage.value = '';
+    imagePreviewContainer.classList.add('hidden');
+    previewImage.src = '';
+   }
+  removeButton.addEventListener('click', function () {
+    fileInputImage.value = '';
+    imagePreviewContainer.classList.add('hidden');
+    previewImage.src = '';
+  });
+}
+
+  const videoPreviewContainer = document.getElementById('video-preview');
+  const videoElement = document.getElementById('preview-video');
+  const fileInputVideo = document.getElementById('file-uploadVid');
+if(fileInputVideo){
+  fileInputVideo.addEventListener('change', function(event) {
+  const file = event.target.files[0];
+
+  if (file) {
+    const fileURL = URL.createObjectURL(file);
+    videoElement.src = fileURL;
+    videoPreviewContainer.classList.remove('hidden');
+  }
+
+  clearVideoPreview();
+  
+});
+}
+function clearVideoPreview (clicked){
+    const removeButtonVid = document.getElementById('remove-btn-vid');
+    const videoPreviewContainer = document.getElementById('video-preview');
+  if(videoPreviewContainer){ // this check beacuse in device no video is show
+
+    if(clicked){
+        videoElement.pause();
+        videoElement.src = '';
+        videoPreviewContainer.classList.add('hidden');
+        fileInputVideo.value = ''; 
+    }
+    removeButtonVid.addEventListener('click', function() {
+        videoElement.pause();
+        videoElement.src = '';
+        videoPreviewContainer.classList.add('hidden');
+        fileInputVideo.value = ''; 
+      });
+  }
+}
+
+
+// this handle uplad experiment
+
+
+  

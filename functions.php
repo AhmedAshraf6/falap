@@ -18,8 +18,17 @@ function ahmed_add_styles() {
 }
 
 function ahmed_add_scripts() {
-  wp_enqueue_script('mainJs',get_template_directory_uri() . '/assets/js/main.js',array(),'1.2.8',true);
+    // Enqueue Axios
+    wp_enqueue_script('axios', 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js', array(), null, true);
+
+    // Enqueue your main.js script
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('axios'), null, true);
+
+    // Pass AJAX URL to JavaScript
+    wp_localize_script('main-js', 'experimentAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
 }
+add_action('wp_enqueue_scripts', 'ahmed_add_scripts');
+
 function initlize_swiper(){
   ?>
 
@@ -83,7 +92,6 @@ function ahmed_extend_exceprt_change_dots($more){
 add_filter('excerpt_more','ahmed_extend_exceprt_change_dots');
 
 add_action('wp_enqueue_scripts','ahmed_add_styles');
-add_action('wp_enqueue_scripts','ahmed_add_scripts');
 add_action('init','ahmed_custom_menu');
 
 function awesome_custom_post_type() {
@@ -190,61 +198,74 @@ $query->set('posts_per_page', 6);
 
 add_action('pre_get_posts','falab_adjust_queries');
 
+
 function handle_experiment_submission() {
-    if (isset($_POST['submit_experiment']) && wp_verify_nonce($_POST['experiment_nonce'], 'experiment_nonce')) {
-        $title = sanitize_text_field($_POST['title']);
-        $category = sanitize_text_field($_POST['experiment_category']);
-        $purpose = sanitize_textarea_field($_POST['experiment_purpose']);
-        $tools = sanitize_textarea_field($_POST['experiment_tool']);
-        $steps = sanitize_textarea_field($_POST['experiment_steps']);
-        $reports = sanitize_textarea_field($_POST['experiment_reports']);
+    if (!isset($_POST['experiment_nonce']) || !wp_verify_nonce($_POST['experiment_nonce'], 'experiment_nonce')) {
+        wp_send_json_error(['message' => 'Security check failed!']);
+        return;
+    }
 
-        // Insert the Experiment as a Draft Post
-        $experiment_id = wp_insert_post(array(
-            'post_title' => $title,
-            'post_type' => 'experiment',
-            'post_status' => 'pending' // Change to "publish" if you don't need approval
-        ));
+    $title = sanitize_text_field($_POST['title']);
+    $category = sanitize_text_field($_POST['experiment_category']);
+    $purpose = sanitize_textarea_field($_POST['experiment_purpose']);
+    $tools = sanitize_textarea_field($_POST['experiment_tool']);
+    $steps = sanitize_textarea_field($_POST['experiment_steps']);
+    $reports = sanitize_textarea_field($_POST['experiment_reports']);
 
-        if ($experiment_id) {
-            update_post_meta($experiment_id, 'experiment_category', $category);
-            update_post_meta($experiment_id, 'experiment_purpose', $purpose);
-            update_post_meta($experiment_id, 'experiment_tool', $tools);
-            update_post_meta($experiment_id, 'experiment_steps', $steps);
-            update_post_meta($experiment_id, 'experiment_reports', $reports);
+    $experiment_id = wp_insert_post([
+        'post_title'  => $title,
+        'post_type'   => 'experiment',
+        'post_status' => 'pending'
+    ]);
 
-            // Handle Image Upload
-            if (!empty($_FILES['experiment_image']['name'])) {
-                require_once ABSPATH . 'wp-admin/includes/file.php';
-                require_once ABSPATH . 'wp-admin/includes/media.php';
-                require_once ABSPATH . 'wp-admin/includes/image.php';
+    if ($experiment_id) {
+        update_field('experiment_category', $category, $experiment_id);
+        update_field('experiment_purpose', $purpose, $experiment_id);
+        update_field('experiment_tool', $tools, $experiment_id);
+        update_field('experiment_steps', $steps, $experiment_id);
+        update_field('experiment_reports', $reports, $experiment_id);
 
-                $image_id = media_handle_upload('experiment_image', $experiment_id);
-                if (!is_wp_error($image_id)) {
-                    set_post_thumbnail($experiment_id, $image_id);
-                }
+        // Handle Image Upload
+        if (!empty($_FILES['experiment_image']['name'])) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+
+            $image_id = media_handle_upload('experiment_image', $experiment_id);
+            if (!is_wp_error($image_id)) {
+                set_post_thumbnail($experiment_id, $image_id);
             }
-
-            if (!empty($_FILES['experiment_video']['name'])) {
-    require_once ABSPATH . 'wp-admin/includes/file.php';
-    require_once ABSPATH . 'wp-admin/includes/media.php';
-
-    $video_id = media_handle_upload('experiment_video', $experiment_id);
-    
-    if (!is_wp_error($video_id)) {
-        update_field('experiment_video', $video_id, $experiment_id); // Store Attachment ID
-    } else {
-        error_log('Video Upload Error: ' . $video_id->get_error_message());
-    }
-}
-
-
-            echo "<p>Experiment submitted successfully!</p>";
-        } else {
-            echo "<p>Submission failed. Please try again.</p>";
         }
+
+       
+        if (!empty($_FILES['experiment_video']['name'])) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+
+            $video_id = media_handle_upload('experiment_video', $experiment_id);
+            
+            if (!is_wp_error($video_id)) {
+                update_field('experiment_video', $video_id, $experiment_id); // Store Attachment ID
+            } else {
+                error_log('Video Upload Error: ' . $video_id->get_error_message());
+            }
+        }
+        if (!empty($_FILES['experiment_reports']['name'])) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+
+            $report_id = media_handle_upload('experiment_reports', $experiment_id);
+            
+            if (!is_wp_error($report_id)) {
+                update_field('experiment_reports', $report_id, $experiment_id); // Store Attachment ID
+            } else {
+                error_log('file Upload Error: ' . $report_id->get_error_message());
+            }
+        }
+
+        wp_send_json_success(['message' => 'تمت الاضافة بنجاح سيتم مراجعتها والموافقة عليها قريبا']);
+    } else {
+        wp_send_json_error(['message' => 'حدث خطا ما الارسال حاول مرة أخري']);
     }
 }
-
-// 🔹 Use this action to allow guest submissions
-add_action('admin_post_nopriv_submit_experiment', 'handle_experiment_submission');
+add_action('wp_ajax_handle_experiment_submission', 'handle_experiment_submission');
+add_action('wp_ajax_nopriv_handle_experiment_submission', 'handle_experiment_submission'); 
