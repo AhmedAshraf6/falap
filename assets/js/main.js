@@ -167,5 +167,41 @@ const listenToScroll = function () {
 document.addEventListener('DOMContentLoaded', () => {
   listenToScroll();
   checkSectionId();
+  handleFormSubmission();
 });
+
+// handle form submission
+function handleFormSubmission() {
+    const form = document.getElementById("experimentForm");
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent page reload
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await axios.post('<?php echo admin_url("admin-ajax.php"); ?>', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            if (response.data.success) {
+                showToast(response.data.data.message, 'green'); // Success
+                form.reset(); // Reset form
+            } else {
+                showToast(response.data.data.message, 'red'); // Error
+            }
+        } catch (error) {
+            showToast('An error occurred. Please try again.', 'red');
+        }
+    });
+
+    function showToast(message, color) {
+        const toast = document.getElementById("toastMessage");
+        toast.textContent = message;
+        toast.classList.remove("hidden");
+        toast.style.backgroundColor = color;
+        setTimeout(() => toast.classList.add("hidden"), 3000);
+    }
+}
+
 

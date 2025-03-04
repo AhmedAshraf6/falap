@@ -15,7 +15,7 @@
 
 <body>
 
-  <div class="fixed bg-base-100 w-full z-[2] flex justify-center headerContainer">
+  <div class="fixed bg-base-100 w-full z-[9] flex justify-center headerContainer">
     <nav
       class='navbar anaqidNavbar  w-full max-w-7xl  bg-base-100  rounded-2xl  flex justify-between items-center z-20 px-5 sm:px-10 py-5 '>
 
@@ -55,9 +55,8 @@
           alt="">
       </button>
       <div class=" gap-2 hidden lg:flex">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/fileIntro.svg' alt="fileIntro">
-        <a href='<?php echo get_template_directory_uri(); ?>/assets/images/AppsBunches_Tech_Profile.pdf'>
-          <span class="text-[#575757]">الملف التعريفي</span>
+        <a href="<?php echo site_url() . '/add-experiment'?>" class="btn btn-primary">
+          أضف تجربة
         </a>
       </div>
 

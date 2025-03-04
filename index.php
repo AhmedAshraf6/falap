@@ -5,7 +5,7 @@
  ));
 ?>
 
-<section class="layout my-10">
+<section class="layout my-10 ">
 
   <div class="grid lg:grid-cols-4 gap-5">
 

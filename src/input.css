@@ -109,14 +109,6 @@ body {
 
 /* Home */
 
-/* scroll to top */
-#btn-back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2;
-  display: none;
-}
 /* Whattsapp */
 #whattapBtn {
   position: fixed;
@@ -125,11 +117,19 @@ body {
   z-index: 2;
   display: block;
 }
-.mySwiper2 .content-ourClients p {
-  font-size: 28px;
+
+
+.home-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 40px;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 100%;
+  z-index: 1;
+  border-radius:12px;
 }
-@media (max-width: 64px) {
-  .mySwiper2 .content-ourClients p {
-    font-size: 18px;
-  }
+.home-image-wrapper::before {
+@apply bg-primary;
 }

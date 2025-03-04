@@ -1,5 +1,5 @@
  <a href="<?php the_permalink(); ?>">
-   <div class="relative flex flex-col bg-white shadow-sm border border-[#e1e1e1]  rounded-lg ">
+   <div class="relative flex flex-col bg-white shadow-sm border border-[#e1e1e1]  rounded-lg bg-base-100">
      <div class="relative h-56  overflow-hidden text-white rounded-md">
        <img
          src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_theme_file_uri('/assets/images/default.jpg'); ?>"

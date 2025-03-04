@@ -166,7 +166,7 @@ function pageBanner($args = NULL) {
 
   ?>
 
-<section class='h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center'
+<section class='h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center mt-24 '
   style="background-image: url(<?php echo $args['photo']; ?>);">
   <div class='overlay absolute w-full h-full top-0 left-0 bg-primary opacity-90'></div>
   <div class='layout absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[50%] text-base-100'>
@@ -189,3 +189,62 @@ $query->set('posts_per_page', 6);
 }
 
 add_action('pre_get_posts','falab_adjust_queries');
+
+function handle_experiment_submission() {
+    if (isset($_POST['submit_experiment']) && wp_verify_nonce($_POST['experiment_nonce'], 'experiment_nonce')) {
+        $title = sanitize_text_field($_POST['title']);
+        $category = sanitize_text_field($_POST['experiment_category']);
+        $purpose = sanitize_textarea_field($_POST['experiment_purpose']);
+        $tools = sanitize_textarea_field($_POST['experiment_tool']);
+        $steps = sanitize_textarea_field($_POST['experiment_steps']);
+        $reports = sanitize_textarea_field($_POST['experiment_reports']);
+
+        // Insert the Experiment as a Draft Post
+        $experiment_id = wp_insert_post(array(
+            'post_title' => $title,
+            'post_type' => 'experiment',
+            'post_status' => 'pending' // Change to "publish" if you don't need approval
+        ));
+
+        if ($experiment_id) {
+            update_post_meta($experiment_id, 'experiment_category', $category);
+            update_post_meta($experiment_id, 'experiment_purpose', $purpose);
+            update_post_meta($experiment_id, 'experiment_tool', $tools);
+            update_post_meta($experiment_id, 'experiment_steps', $steps);
+            update_post_meta($experiment_id, 'experiment_reports', $reports);
+
+            // Handle Image Upload
+            if (!empty($_FILES['experiment_image']['name'])) {
+                require_once ABSPATH . 'wp-admin/includes/file.php';
+                require_once ABSPATH . 'wp-admin/includes/media.php';
+                require_once ABSPATH . 'wp-admin/includes/image.php';
+
+                $image_id = media_handle_upload('experiment_image', $experiment_id);
+                if (!is_wp_error($image_id)) {
+                    set_post_thumbnail($experiment_id, $image_id);
+                }
+            }
+
+            if (!empty($_FILES['experiment_video']['name'])) {
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
+    $video_id = media_handle_upload('experiment_video', $experiment_id);
+    
+    if (!is_wp_error($video_id)) {
+        update_field('experiment_video', $video_id, $experiment_id); // Store Attachment ID
+    } else {
+        error_log('Video Upload Error: ' . $video_id->get_error_message());
+    }
+}
+
+
+            echo "<p>Experiment submitted successfully!</p>";
+        } else {
+            echo "<p>Submission failed. Please try again.</p>";
+        }
+    }
+}
+
+// 🔹 Use this action to allow guest submissions
+add_action('admin_post_nopriv_submit_experiment', 'handle_experiment_submission');
