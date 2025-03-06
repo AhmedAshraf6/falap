@@ -15,7 +15,7 @@
         <h6 class="mb-2 text-slate-800 text-xl font-semibold">
           <?php the_title(); ?>
         </h6>
-        <p class="text-neutral leading-normal font-light">
+        <p class="text-neutral leading-normal font-light line-clamp-2">
           <?php if (has_excerpt()) {
                         echo get_the_excerpt();
                       } else {

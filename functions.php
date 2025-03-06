@@ -148,6 +148,33 @@ function awesome_custom_post_type() {
 
         )
     );
+    // preparation library 
+  	$labels2 = array(
+		'name' => 'مكتبة محضرة المختبر',
+		'singular_name' => 'falapPrepartionLibrary',
+		'add_new' => 'اضافة عنصر',
+		'all_items' => 'جميع العناصر',
+		'add_new_item' => 'اضافة عنصر',
+		'edit_item' => 'تعديل عنصر',
+		'new_item' => 'اضافة عنصر',
+		'view_item' => 'مشاهدة عنصر',
+		'search_item' => 'البحث في المكتبة',
+		'not_found' => 'لم يتم ايجاد عنصر',
+		'not_found_in_trash' => 'لم يتم ايجاد شئ ف السلة',
+		'parent_item_colon' => 'Parent Item'
+	);
+    register_post_type('preparation_library',
+        array(
+            'labels'      => $labels2,
+            'public'      => true,
+            'has_archive' => true,
+            'show_in_rest' => true,
+            'menu_icon'   => 'dashicons-book',
+            'supports'    => array('title', 'editor', 'thumbnail','excerpt'),
+            'rewrite'     => array('slug' => 'preparation-libraries'),
+
+        )
+    );
 }
 
 add_action('init', 'awesome_custom_post_type');
