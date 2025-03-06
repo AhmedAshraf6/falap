@@ -169,7 +169,7 @@ function awesome_custom_post_type() {
             'public'      => true,
             'has_archive' => true,
             'show_in_rest' => true,
-            'menu_icon'   => 'dashicons-book',
+            'menu_icon'   => 'dashicons-text-page',
             'supports'    => array('title', 'editor', 'thumbnail','excerpt'),
             'rewrite'     => array('slug' => 'preparation-libraries'),
 

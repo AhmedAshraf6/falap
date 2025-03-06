@@ -21,7 +21,7 @@
 
       <a href="<?php echo site_url() ?>" rel="home" class="sm:w-auto sm:h-auto">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/logo.png"
-          class="max-w-[200px] max-h-[60px] w-auto h-auto object-contain">
+          class="max-w-[200px] max-h-[80px] lg:max-h-[100px] w-auto h-auto object-contain">
       </a>
 
 
@@ -44,10 +44,9 @@
 
         </div>
         <?php ahmed_bootstrap_navbar_mobile(); ?>
-        <div class="flex gap-2 items-center justify-center w-full my-[40px]">
-          <img src='<?php echo get_template_directory_uri(); ?>/assets/images/fileIntro.svg' alt="fileIntro">
-          <a href='<?php echo get_template_directory_uri(); ?>/assets/images/AppsBunches_Tech_Profile.pdf'>
-            <span class="text-[#575757]">الملف التعريفي</span>
+        <div class=" gap-2 flex w-full justify-center lg:hidden mt-5">
+          <a href="<?php echo site_url() . '/add-experiment'?>" class="btn btn-primary">
+            أضف تجربة
           </a>
         </div>
       </div>
