@@ -562,6 +562,9 @@ video {
 .-left-4 {
   left: -1rem;
 }
+.-left-6 {
+  left: -1.5rem;
+}
 .z-10 {
   z-index: 10;
 }
@@ -1007,6 +1010,12 @@ video {
 }
 .stroke-primary {
   stroke: #324846;
+}
+.stroke-current {
+  stroke: currentColor;
+}
+.stroke-\[\] {
+  stroke-width: ;
 }
 .object-contain {
   -o-object-fit: contain;

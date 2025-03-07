@@ -55,7 +55,9 @@ class Ahmed_Walker_Nav_Menu extends Walker_Nav_Menu {
         $output .= '<a href="' . $item->url . '" class="menu-link block  ">' . $item->title . '</a>';
         
         if ($has_children) {
-            $output .= '<button class="dropdown-arrow absolute -left-4 top-1/2 transform -translate-y-1/2">▼</button>';
+            $output .= '<button class="dropdown-arrow absolute -left-6 top-1/2 transform -translate-y-1/2">                         <svg class="stroke-primary" width="20" height="20" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6002 7.95831L11.1668 13.3917C10.5252 14.0334 9.47516 14.0334 8.8335 13.3917L3.40015 7.95831" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></button>';
         }
     }
 

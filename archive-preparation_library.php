@@ -1,7 +1,11 @@
 <?php
  get_header();
+$filter = isset($_GET['filter']) && !empty($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
+
+$title = $filter ? 'مكتبة محضرة المختبر - ' . ucfirst($filter) : 'مكتبة محضرة المختبر';
+
  pageBanner(array(
-  'title' => 'مكتبة محضرة المختبر '
+  'title' => $title
  ));
 
 ?>

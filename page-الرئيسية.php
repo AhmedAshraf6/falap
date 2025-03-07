@@ -158,8 +158,8 @@
 
 <!-- banner -->
 <section class="my-5 lg:my-8 layout">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab2.jpg" alt="image"
-    class="h-[350px] md:h-[550px] object-cover w-full rounded-3xl ">
+  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab2.png" alt="image"
+    class="object-cotain w-full rounded-3xl ">
 </section>
 
 <!-- Contact Form  -->
