@@ -201,7 +201,7 @@
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/mail.svg' alt="icon">
             </div>
           </div>
-          <a class="text-base sm:text-lg" href="mailto:Apps@AppsBunches.com">info@AppsBunches.com</a>
+          <a class="text-base sm:text-lg" href="mailto:info@ffalab.com">info@ffalab.com</a>
         </div>
         <!-- Address -->
         <div class="flex flex-col sm:flex-row  items-center gap-3 sm:gap-6">

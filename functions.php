@@ -41,6 +41,29 @@ add_action('wp_footer', 'initlize_swiper');
   ** 7/1/2024
 */
 // Number Pagination
+class Ahmed_Walker_Nav_Menu extends Walker_Nav_Menu {
+    function start_lvl( &$output, $depth = 0, $args = null ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class='submenu hidden absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 transition-opacity  duration-300 opacity-0'>\n";
+    }
+
+    function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+        $class_names = !empty( $item->classes ) ? implode(' ', $item->classes) : '';
+        $has_children = in_array('menu-item-has-children', $item->classes);
+        $output .= '<li class="menu-item relative group' . $class_names . '">';
+        
+        $output .= '<a href="' . $item->url . '" class="menu-link block  ">' . $item->title . '</a>';
+        
+        if ($has_children) {
+            $output .= '<button class="dropdown-arrow absolute -left-4 top-1/2 transform -translate-y-1/2">▼</button>';
+        }
+    }
+
+    function end_lvl( &$output, $depth = 0, $args = null ) {
+        $output .= "</ul>\n";
+    }
+}
+
 
 function ahmed_custom_menu(){
       register_nav_menus(array(
@@ -53,7 +76,9 @@ function ahmed_bootstrap_navbar(){
   wp_nav_menu(array(
      'theme_location' => 'bootstrap-menu',
      'menu_class' => 'navbar-menu flex gap-6',
-     'container' => ''
+     'container' => '',
+          'walker' => new Ahmed_Walker_Nav_Menu() // Custom Walker
+
   ));
 }
 function ahmed_bootstrap_footer(){
@@ -67,7 +92,9 @@ function ahmed_bootstrap_navbar_mobile(){
   wp_nav_menu(array(
      'theme_location' => 'bootstrap-menu',
      'menu_class' => 'mobile-navbar-menu flex flex-col gap-5  items-center w-full mt-[40px]',
-     'container' => ''
+     'container' => '',
+     'walker' => new Ahmed_Walker_Nav_Menu() // Custom Walker
+
   ));
 }
 
@@ -172,7 +199,6 @@ function awesome_custom_post_type() {
             'menu_icon'   => 'dashicons-text-page',
             'supports'    => array('title', 'editor', 'thumbnail','excerpt'),
             'rewrite'     => array('slug' => 'preparation-libraries'),
-
         )
     );
 }
@@ -214,17 +240,10 @@ function pageBanner($args = NULL) {
 </section>
 <?php }
 
-function falab_adjust_queries($query) {
-if (!is_admin() AND is_post_type_archive('experiment') AND $query->is_main_query()) {
-$query->set('orderby', 'title');
-$query->set('order', 'ASC');
-$query->set('posts_per_page', 6);
-}
 
 
-}
 
-add_action('pre_get_posts','falab_adjust_queries');
+
 
 
 function handle_experiment_submission() {
@@ -297,3 +316,29 @@ function handle_experiment_submission() {
 }
 add_action('wp_ajax_handle_experiment_submission', 'handle_experiment_submission');
 add_action('wp_ajax_nopriv_handle_experiment_submission', 'handle_experiment_submission'); 
+
+
+function falab_adjust_queries($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        
+
+        // ✅ Filtering "experiment" by "experiment_cat"
+        if (is_post_type_archive('experiment')) {
+           $query->set('orderby', 'title');
+          $query->set('order', 'ASC');
+          $query->set('posts_per_page', 6);
+        }
+    }
+      if (!is_admin() && $query->is_main_query() && is_post_type_archive('preparation_library')) {
+        if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+            $query->set('meta_query', array(
+                array(
+                    'key'     => 'library_select', // ACF field name
+                    'value'   => sanitize_text_field($_GET['filter']),
+                    'compare' => '=',
+                ),
+            ));
+        }
+    }
+}
+add_action('pre_get_posts', 'falab_adjust_queries');

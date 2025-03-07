@@ -538,6 +538,9 @@ video {
   top: 0px;
   bottom: 0px;
 }
+.-left-2 {
+  left: -0.5rem;
+}
 .end-0 {
   inset-inline-end: 0px;
 }
@@ -555,6 +558,9 @@ video {
 }
 .top-20 {
   top: 5rem;
+}
+.-left-4 {
+  left: -1rem;
 }
 .z-10 {
   z-index: 10;
@@ -724,9 +730,6 @@ video {
 .max-h-\[80px\] {
   max-height: 80px;
 }
-.max-h-\[100px\] {
-  max-height: 100px;
-}
 .min-h-\[40vh\] {
   min-height: 40vh;
 }
@@ -750,6 +753,9 @@ video {
 }
 .w-4 {
   width: 1rem;
+}
+.w-48 {
+  width: 12rem;
 }
 .w-5 {
   width: 1.25rem;
@@ -784,9 +790,6 @@ video {
 .max-w-none {
   max-width: none;
 }
-.max-w-\[300px\] {
-  max-width: 300px;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -804,6 +807,9 @@ video {
 }
 .rotate-180 {
   --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 @keyframes bounce {
@@ -1051,6 +1057,10 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -1191,6 +1201,9 @@ video {
   --tw-placeholder-opacity: 1;
   color: rgb(144 144 144 / var(--tw-placeholder-opacity));
 }
+.opacity-0 {
+  opacity: 0;
+}
 .opacity-70 {
   opacity: 0.7;
 }
@@ -1220,6 +1233,17 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-300 {
+  transition-duration: 300ms;
 }
 @font-face {
   font-family: Avenic;
@@ -1406,6 +1430,21 @@ body {
   border-radius:12px;
   --tw-bg-opacity: 1;
   background-color: rgb(50 72 70 / var(--tw-bg-opacity));
+}
+.submenu {
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.submenu li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.group:hover .submenu {
+    opacity: 1;
+    transform: translateY(0);
+    
 }
 .after\:mt-2::after {
   content: var(--tw-content);

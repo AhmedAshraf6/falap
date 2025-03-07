@@ -133,3 +133,15 @@ body {
 .home-image-wrapper::before {
 @apply bg-primary;
 }
+.submenu {
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.submenu li {
+    @apply px-4 py-2
+}
+.group:hover .submenu {
+    opacity: 1;
+    transform: translateY(0);
+    
+}

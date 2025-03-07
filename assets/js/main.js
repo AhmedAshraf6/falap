@@ -346,4 +346,13 @@ function clearVideoPreview (clicked){
 // this handle uplad experiment
 
 
-  
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".dropdown-arrow").forEach((arrow) => {
+        arrow.addEventListener("click", function (event) {
+            event.preventDefault();
+            let submenu = this.parentElement.querySelector(".submenu");
+            submenu.classList.toggle("hidden");
+            submenu.classList.toggle("opacity-0");
+        });
+    });
+});
