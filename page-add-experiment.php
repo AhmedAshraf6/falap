@@ -128,19 +128,7 @@
         <input type="file" id="experiment_reports" name="experiment_reports" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt">
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-    <button type="submit" class="btn btn-primary mt-3 sm:mt-5" name="submit_experiment">إرسال</button>
+    <button type="submit" class="btn btn-primary mt-3 sm:mt-5 submit_experiment" name="submit_experiment">اضافة</button>
   </form>
 </section>
 

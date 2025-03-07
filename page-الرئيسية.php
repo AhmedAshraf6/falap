@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <!-- slider -->
 
-<section section-id="{{ sectionId }}" class="main-slider pt-24 h-[70vh] sm:h-[70vh]">
+<section section-id="{{ sectionId }}" class="main-slider pt-[120px] h-[90vh] sm:h-[70vh]">
   <div class="swiper main_slider2 h-full">
     <div class="swiper-wrapper">
       <div class="swiper-slide" style="

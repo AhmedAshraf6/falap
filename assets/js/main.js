@@ -172,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // handle form submission
 function handleFormSubmission() {
     const forms = document.querySelectorAll('.experimentForm');
-
     forms.forEach(function(form) {
         form.addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent page reload
-
+            const btnSubmit = form.querySelector('.submit_experiment');
             const formData = new FormData(form);
-
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'جاري الارسال ..';
             // Validate files before submission
             if (!validateFiles(formData)) {
                 return; // Stop submission if validation fails
@@ -201,6 +201,9 @@ function handleFormSubmission() {
                 }
             } catch (error) {
                 showToast('حدث خطأ ما من فضلك حاول مرة أخري', '#fef2f2', '#991b1b');
+            } finally{
+               btnSubmit.disabled = false;
+               btnSubmit.textContent = 'اضافة';
             }
         });
     });

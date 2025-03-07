@@ -74,7 +74,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary mt-3 sm:mt-5" name="submit_experiment">اضافة جهاز</button>
+    <button type="submit" class="btn btn-primary mt-3 sm:mt-5 submit_experiment" name="submit_experiment">اضافة</button>
   </form>
 </section>
 

@@ -646,6 +646,9 @@ video {
 .mt-\[40px\] {
   margin-top: 40px;
 }
+.mt-36 {
+  margin-top: 9rem;
+}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -720,6 +723,12 @@ video {
 }
 .h-full {
   height: 100%;
+}
+.h-\[80vh\] {
+  height: 80vh;
+}
+.h-\[90vh\] {
+  height: 90vh;
 }
 .max-h-\[150px\] {
   max-height: 150px;
@@ -1093,6 +1102,15 @@ video {
 }
 .pt-24 {
   padding-top: 6rem;
+}
+.pt-32 {
+  padding-top: 8rem;
+}
+.pt-36 {
+  padding-top: 9rem;
+}
+.pt-\[120px\] {
+  padding-top: 120px;
 }
 .text-center {
   text-align: center;
