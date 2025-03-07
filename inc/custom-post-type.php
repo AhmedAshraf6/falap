@@ -48,16 +48,21 @@ function sunset_contact_custom_post_type() {
 	
 }
 
-function sunset_set_contact_columns( $columns ){
-	$newColumns = array();
-	$newColumns['title'] = 'الاسم كاملا';
-	$newColumns['message'] = 'الرسالة';
-	$newColumns['email'] = 'البريد الالكتروني';
-	$newColumns['phone'] = 'رقم المحمول';
-	$newColumns['date'] = 'التاريخ';
-	return $newColumns;
+function sunset_set_contact_columns($columns) {
+    $newColumns = array();
+    
+    // Add the bulk select checkbox column
+    $newColumns['cb'] = '<input type="checkbox" />';
+    
+    // Add your custom columns
+    $newColumns['title'] = 'الاسم كاملا';
+    $newColumns['message'] = 'الرسالة';
+    $newColumns['email'] = 'البريد الالكتروني';
+    $newColumns['phone'] = 'رقم المحمول';
+    $newColumns['date'] = 'التاريخ';
+    
+    return $newColumns;
 }
-
 function sunset_contact_custom_column( $column, $post_id ){
 	
 	switch( $column ){
@@ -159,3 +164,65 @@ function sunset_save_contact_email_data( $post_id ) {
 	update_post_meta( $post_id, '_contact_email_value_key', $my_data );
 	
 }
+// Mark the message as "read" when the admin views it
+// Mark message as "read" when an admin opens it
+add_action('add_meta_boxes', function () {
+    global $post;
+    if ($post->post_type === 'sunset-contact') {
+        if (get_post_meta($post->ID, 'message_status', true) !== 'read') {
+            update_post_meta($post->ID, 'message_status', 'read');
+        }
+    }
+});
+
+function sunset_contact_notification_bubble() {
+    global $menu, $pagenow;
+
+    // Get the current user ID
+    $user_id = get_current_user_id();
+
+    // Check if we are on the edit screen for the 'sunset-contact' post type
+    $is_edit_page = ($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == 'sunset-contact');
+
+    // If the user is on the "All Messages" page, update the last visited timestamp
+    if ($is_edit_page) {
+        update_user_meta($user_id, 'sunset_contact_last_visited', time());
+    }
+
+    // Get the user's last visited timestamp
+    $last_visited = get_user_meta($user_id, 'sunset_contact_last_visited', true);
+
+    // If the user has never visited the page, set the last visited timestamp to the earliest possible time
+    if (!$last_visited) {
+        $last_visited = 0; // Unix timestamp for "beginning of time"
+    }
+
+    // Get all published messages for the custom post type 'sunset-contact'
+    $args = array(
+        'post_type'      => 'sunset-contact',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'date_query'     => array(
+            array(
+                'after'  => date('Y-m-d H:i:s', $last_visited), // Only count messages published after the last visit
+                'column' => 'post_date',
+            ),
+        ),
+    );
+
+    $query = new WP_Query($args);
+    $new_message_count = $query->found_posts; // Count of new messages
+
+    // Only add the bubble if there are new messages
+    if ($new_message_count > 0) {
+        // Loop through the menu to find the 'sunset-contact' post type menu item
+        foreach ($menu as $key => $value) {
+            if ($menu[$key][2] == 'edit.php?post_type=sunset-contact') {
+                // Add the bubble with the count of new messages
+                $menu[$key][0] .= " <span class='update-plugins count-$new_message_count'><span class='plugin-count'>" . number_format_i18n($new_message_count) . '</span></span>';
+                break;
+            }
+        }
+    }
+}
+add_action('admin_menu', 'sunset_contact_notification_bubble');

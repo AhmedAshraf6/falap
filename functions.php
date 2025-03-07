@@ -14,7 +14,7 @@
   ** 6/1/2024
 */
 function ahmed_add_styles() {
-  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.8');
+  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.9');
 }
 
 function ahmed_add_scripts() {
