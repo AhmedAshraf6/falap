@@ -4,114 +4,122 @@
 //  $arrPartener1 = ['assets/images/parteners/1.webp','assets/images/parteners/13.webp','assets/images/parteners/13.webp','']
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<!-- slider -->
 
-<section section-id="{{ sectionId }}" class="main-slider pt-[120px] h-[90vh] sm:h-[70vh]">
-  <div class="swiper main_slider2 h-full">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" style="
-      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/home/bg.png');
-      background-repeat: repeat;
-      
-     ">
-        <div
-          class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3 sm:gap-5 layout h-full">
-          <div class="flex flex-col items-center sm:items-start gap-5  sm:gap-8 sm:flex-1">
-            <h3 class="text-[#fff] text-2xl font-bold leading-10 sm:text-4xl text-center sm:text-start">
-              دليلك الشامل للمختبرات العملية
-            </h3>
-            <p class="text-[#fff] text-md leading-7  mt-2 sm:mt-4 text-center sm:text-start">
-              تلعب المختبرات العملية دورًا أساسيًا في دراسة العلوم، حيث توفر بيئة تجريبية لفهم المبادئ النظرية بشكل عملي
-              وملموس. تعد الكيمياء والفيزياء من أكثر العلوم التي تعتمد على التجارب العملية لتوضيح الظواهر المختلفة
-              وتحليل المواد والتفاعلات.
-
-            </p>
-
-            <a href="<?php  echo site_url() . '/experiments' ?>"
-              class="btn btn-primary self-center sm:self-start  rounded-3xl">
-              المختبرات العلمية
-            </a>
-
-          </div>
-          <div class="image sm:flex-1">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab.png" alt="Slide Image"
-              class="w-full h-auto object-cover rounded-xl">
-          </div>
-
-        </div>
-      </div>
-      <div class="swiper-slide" style="
-      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/home/bg.png');
-      background-repeat: repeat;
-      
-     ">
-        <div
-          class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3 sm:gap-5 layout h-full">
-          <div class="flex flex-col items-center sm:items-start gap-5  sm:gap-8 sm:flex-1">
-            <h3 class="text-[#fff] text-2xl font-bold leading-10 sm:text-4xl text-center sm:text-start">
-              المكتبة العلمية
-            </h3>
-            <p class="text-[#fff] text-md leading-7  mt-2 sm:mt-4 text-center sm:text-start">
-              تلعب المختبرات العملية دورًا أساسيًا في دراسة العلوم، حيث توفر بيئة تجريبية لفهم المبادئ النظرية بشكل عملي
-              وملموس. تعد الكيمياء والفيزياء من أكثر العلوم التي تعتمد على التجارب العملية .
-
-            </p>
-
-            <a href="<?php  echo site_url() . '/experiments' ?>"
-              class="btn btn-primary self-center sm:self-start  rounded-3xl">
-              المكتبة العلمية
-            </a>
-
-          </div>
-          <div class="image sm:flex-1">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab3.png" alt="Slide Image"
-              class="w-full h-auto object-cover rounded-xl">
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-  </div>
+<!-- banner -->
+<section id="ffalab.com">
+  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/banner.svg" alt="image"
+    class="object-cotain w-full  ">
 </section>
-
 
 
 <!-- about us -->
-<section class="py-24 relative">
+<section class="sm:pt-24 relative">
   <div class="layout">
-    <div class="w-full justify-start items-center gap-8 grid lg:grid-cols-2 grid-cols-1">
-      <div class="w-full flex-col justify-start lg:items-start items-center gap-10 inline-flex">
+    <div class="w-full justify-start items-center gap-8 grid lg:grid-cols-3">
+      <div class="w-full flex-col justify-start lg:items-start items-center gap-10 inline-flex lg:col-span-2">
         <div class="w-full flex-col justify-start lg:items-start items-center gap-4 flex">
-          <h2 class="text-primary text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+          <h2 class="text-primary text-lg sm:text-4xl font-bold font-manrope  lg:text-start text-center">
             من نحن
           </h2>
-          <p class="text-neutral text-base font-normal leading-relaxed lg:text-start text-center">
-            تلعب المختبرات العملية دورًا أساسيًا في دراسة العلوم، حيث توفر بيئة تجريبية لفهم المبادئ النظرية بشكل عملي
-            وملموس. تعد الكيمياء والفيزياء من أكثر العلوم التي تعتمد على التجارب العملية لتوضيح الظواهر المختلفة
-            وتحليل المواد والتفاعلات.</p>
+          <p class="text-dark text-xs sm:text-xl font-normal leading-normal lg:text-start text-center">
+            مرحبًا بك في <span class="text-primary font-semibold">مختبر فاطمة</span>، الوجهة الأولى لمحضرات المختبر في
+            مجالات
+            الكيمياء،
+            الفيزياء،
+            والأحياء!
+            تم إنشاء هذا الموقع ليكون مرجعًا شاملاً يساعد محضرات المختبر والمعلمين والطلاب في إجراء التجارب العملية، فهم
+            المفاهيم العلمية، والوصول إلى مصادر موثوقة بسهولة.
+          </p>
         </div>
-        <a href="<?php  echo site_url() . '/experiments' ?>" class="btn btn-primary">
-          ابدأ الان
-        </a>
+
       </div>
-      <img class="lg:mx-0 mx-auto h-full rounded-3xl object-cover"
-        src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab2.jpg" alt="about Us image" />
+      <img style="height: 400px;" class="lg:mx-0 mx-auto !h-[400px] rounded-3xl object-contain lg:col-span-1"
+        src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-من-نحن-.jpg" alt="about Us image" />
+    </div>
+    <div class="mt-3 sm:mt-5">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        ماذا نقدم؟
+      </h2>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="flex-1 text-center  text-xs sm:text-xl ">
+          <p> تجارب علمية مفصلة لكل من الكيمياء، الفيزياء، والأحياء.</p>
+          <p>دليل تشغيل الأجهزة المختبرية وإجراءات السلامة.</p>
+        </div>
+        <div class="flex-1 text-center  text-xs sm:text-xl">
+          <p>مكتبة علمية متكاملة تضم مقالات، كتب إلكترونية، وأبحاث.</p>
+          <p> مجتمع علمي تفاعلي يسمح بمشاركة المعرفة والتجارب.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- info -->
+<section class=" bg-primary py-8 sm:py-14 mt-14 sm:mt-24" id="experiments">
+  <div class="layout">
 
+    <div class="flex flex-col gap-3 sm:gap-5">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        التجربة خير برهان
+      </h2>
+      <p class="text-white text-xs sm:text-xl font-normal leading-normal text-center">
+        في هذا القسم، ستجد دليلًا شاملًا لجميع التجارب العلمية التي يحتاجها طلاب المرحلة الثانوية، بالإضافة إلى خطوات
+        واضحة ومبسطة لكل تجربة.
+      </p>
+    </div>
+    <div class="flex flex-col gap-3 sm:gap-5 mt-5 sm:mt-10">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        ماذا ستجد هنا؟
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-white py-5 px-3 text-center">
+          <h4 class="text-base sm:text-lg text-secondary">تجارب الكيمياء</h4>
+          <p class="mt-2 text-primary">دراسة التفاعلات الكيميائية، الخواص الفيزيائية والكيميائية للمواد، وتجارب التحليل
+            الكيميائي.</p>
+        </div>
+        <div class="rounded-2xl bg-white py-5 px-3 text-center">
+          <h4 class="text-base sm:text-lg text-secondary">تجارب الفيزياء</h4>
+          <p class="mt-2 text-primary"> فهم قوانين الحركة، الكهرباء والمغناطيسية، والطاقة. </p>
+        </div>
+        <div class="rounded-2xl bg-white py-5 px-3 text-center">
+          <h4 class="text-base sm:text-lg text-secondary">تجارب الأحياء</h4>
+          <p class="mt-2 text-primary">دراسة الكائنات الحية، المجهر، علم الوراثة، والتشريح.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 sm:gap-5 mt-5 sm:mt-10">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        كل تجربة تحتوي على:
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-5 text-center ">
+        <p class="text-white text-xs sm:text-xl"> الهدف من التجربة.</p>
+        <p class="text-white text-xs sm:text-xl"> الأدوات المطلوبة.</p>
+        <p class="text-white text-xs sm:text-xl"> خطوات تنفيذ التجربة بالتفصيل.</p>
 
-<!-- slider -->
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5 text-center">
+        <p class="text-white text-xs sm:text-xl"> ملاحظات السلامة لضمان إجراء التجربة بأمان.</p>
+        <p class="text-white text-xs sm:text-xl"> نتائج وتحليل البيانات لمساعدة الطلاب على فهم المفاهيم العلمية بشكل
+          تطبيقي.</p>
+      </div>
+
+    </div>
+    <p class="text-sm sm:text-xl font-bold text-secondary text-center mt-5 sm:mt-10">إذا كنتِ محضرة مختبر، يمكنك مشاركة
+      تجاربك
+      معنا والمساهمة في
+      إثراء المحتوى العلمي
+
+    </p>
+  </div>
+</section>
+
 <section class="featured_products py-5 lg:py-10 text-base-content my-5 lg:my-8">
   <div class="layout  overflow-hidden">
     <div class="grid grid-cols-4 gap-3 sm:gap-5">
       <div class="col-span-1 relative">
         <div class="w-full home-image-wrapper">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab.png" alt="image"
-            class="w-full h-96 object-cover rounded-xl absolute z-[2] py-5">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-التجارب.jpg" alt="image"
+            class="w-[467px] min-w-[467px] right-[10px] top-[14px]  h-96 object-cover rounded-3xl  absolute z-[1] py-5">
         </div>
       </div>
       <div class="col-span-3">
@@ -156,14 +164,92 @@
   </div>
 </section>
 
-<!-- banner -->
-<section class="my-5 lg:my-8 layout">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/lab2.png" alt="image"
-    class="object-cotain w-full rounded-3xl ">
+
+<!-- info -->
+<section class=" bg-primary py-8 sm:py-14 mt-14 sm:mt-24" id="preparation-libraries">
+  <div class="layout">
+
+    <div class="flex flex-col gap-3 sm:gap-5">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        مكتبة محضرة المختبر
+
+      </h2>
+      <p class="text-white text-xs sm:text-xl font-normal leading-normal text-center">
+        محضرات المختبر هن العنصر الأساسي في نجاح التجارب العلمية، ولهذا وفرنا هذا القسم خصيصًا لهن!
+
+
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3 sm:gap-5 mt-5 sm:mt-10">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope text-center sm:text-start">
+        ماذا يحتوي هذا القسم
+      </h2>
+      <ul>
+        <li class="text-xs sm:text-lg text-white">دليل تشغيل الأجهزة المختبرية مثل المجهر، الميزان الحساس، وجهاز الطرد
+          المركزي.
+        </li>
+        <li class="text-xs sm:text-lg text-white mt-2 sm:mt-3">إجراءات السلامة في المختبر وكيفية التعامل مع المواد
+          الكيميائية.
+        </li>
+        <li class="text-xs sm:text-lg text-white mt-2 sm:mt-3">نماذج جاهزة لتقارير المختبر تساعد في توثيق النتائج بطرق
+          علمية صحيحة.
+        </li>
+        <li class="text-xs sm:text-lg text-white mt-2 sm:mt-3">نصائح وتوجيهات لمحضرات المختبر في إدارة التجارب وتوفير
+          بيئة عمل آمنة.
+        </li>
+        <li class="text-xs sm:text-lg text-white mt-2 sm:mt-3">إذا كنتِ محضرة مختبر، يمكنك مشاركة خبراتك وتجاربك معنا
+          لنساعد الآخرين
+          على
+          الاستفادة من معرفتك..
+        </li>
+
+      </ul>
+    </div>
+
+
+    <p class="text-xs sm:text-xl font-bold text-secondary text-center mt-5 sm:mt-10">
+      إذا كنتِ محضرة مختبر، يمكنك مشاركة خبراتك وتجاربك معنا لنساعد الآخرين على الاستفادة من معرفتك..
+
+
+    </p>
+    <div class="flex justify-center mt-3 sm:mt-5">
+
+      <a href="<?php echo site_url() . '/add-experiment' ?>" class="btn btn-primary !bg-white !text-primary"> شاركينا
+        المعرفة</a>
+    </div>
+  </div>
+</section>
+<!-- info -->
+<section class="mt-14 sm:mt-24" id="libraries">
+  <div class="layout">
+
+    <div class="flex flex-col gap-3 sm:gap-5">
+      <h2 class="text-primary text-lg sm:text-4xl  font-manrope  text-center">
+        قسم المكتبة العلمية
+      </h2>
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+        المعرفة هي بوابة الاكتشاف
+      </h2>
+      <p class="text-primary text-xs sm:text-xl font-normal leading-normal text-center">
+        في هذا القسم، ستجد مكتبة علمية متكاملة تضم المصادر والمراجع العلمية في مجالات الكيمياء، الفيزياء، والأحياء،
+        بالإضافة إلى قسم الإعجاز العلمي، الذي يربط بين الحقائق العلمية الحديثة والنصوص القرآنية.
+        واضحة ومبسطة لكل تجربة.
+      </p>
+    </div>
+
+
+
+    <div class="flex justify-center mt-5 sm:mt-10">
+
+      <a href="<?php echo site_url() . '/libraries' ?>" class="btn btn-primary ">تصفح المكتبة</a>
+    </div>
+  </div>
 </section>
 
+
 <!-- Contact Form  -->
-<section class=" min-h-[700px] mt-10 sm:mt-16 " style="
+<section class=" min-h-[700px] mt-14 sm:mt-24 " style="
       background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/contact/shape.webp');
       background-size: 100% 100%;
       background-position:center;
@@ -174,7 +260,7 @@
   <div class="layout  ">
     <div class="grid md:grid-cols-2 justify-center items-center gap-5">
       <div class="flex flex-col items-center sm:items-start gap-6">
-        <h1 class="text-2xl sm:text-4xl text-primary ">تواصل معنا</h1>
+        <h1 class="text-lg sm:text-4xl text-primary ">تواصل معنا</h1>
         <!-- phone -->
         <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
           <div class="rounded-full w-12 h-12 relative bg-base-100 ">
@@ -215,7 +301,7 @@
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/address.svg' alt="icon">
             </div>
           </div>
-          <span class="text-base sm:text-lg">السعودية، الرياض، حي الملقا، طريق الإمام سعود بن فيصل</span>
+          <span class="text-sn sm:text-lg">السعودية، الرياض، حي الملقا، طريق الإمام سعود بن فيصل</span>
         </div>
         <!-- Address 2 -->
         <div class="flex flex-col sm:flex-row  items-center gap-3 sm:gap-6">
@@ -229,20 +315,19 @@
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/address.svg' alt="icon">
             </div>
           </div>
-          <span class="text-base sm:text-lg">السعودية، الرياض، حي النزهة، طريق الإمام سعود بن عبدالعزيز</span>
+          <span class="text-sn sm:text-lg">السعودية، الرياض، حي النزهة، طريق الإمام سعود بن عبدالعزيز</span>
         </div>
         <!-- social media -->
         <div class="flex gap-3">
           <div class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-              <a href="https://twitter.com/appsbunches" target="_blank"
+              <a href="https://x.com/?logout=1741465948106" target="_blank"
                 class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
                 <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/x.svg' alt="icon">
               </a>
             </div>
           </div>
-          <a href="https://www.linkedin.com/company/apps-bunches/about/" target="_blank"
-            class="flex items-center gap-3 sm:gap-6">
+          <a href="" target="_blank" class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <div
                 class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
@@ -250,8 +335,7 @@
               </div>
             </div>
           </a>
-          <a href="https://www.youtube.com/@AppsBunches/videos" target="_blank"
-            class="flex items-center gap-3 sm:gap-6">
+          <a href="" target="_blank" class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <div
                 class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
@@ -259,8 +343,7 @@
               </div>
             </div>
           </a>
-          <a href="https://www.linkedin.com/company/apps-bunches/about/" target="_blank"
-            class="flex items-center gap-3 sm:gap-6">
+          <a href="https://www.instagram.com/ffalab2025/" target="_blank" class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <div
                 class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
@@ -298,7 +381,9 @@
 </section>
 <!-- Contact Form  -->
 
-
+<button type="button" class="rounded-full p-2 flex justify-center items-center bg-primary" id="btn-back-to-top">
+  <img src='<?php echo get_template_directory_uri(); ?>/assets/images/arrowup.svg' class="w-5 h-5" alt="ArrowUp">
+</button>
 <!-- Whatts app button -->
 <a href="//api.whatsapp.com/send?phone=966532331339" id="whattapBtn" class="animate animate-bounce" target="_blank">
   <img src='<?php echo get_template_directory_uri(); ?>/assets/images/whatts.svg' class="w-10 h-10" alt="whattsApp">

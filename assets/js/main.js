@@ -122,47 +122,47 @@ const mobileNavMenu = document.querySelectorAll('.mobile-navbar-menu li');
 const mobileNavMenuCon = document.querySelector('.mobile-navbar-menu');
 
 const checkSectionId = function () {
-  // Get all sections
   var sections = document.querySelectorAll('section');
-
-  // Get the current scroll position
   var scrollPosition = window.scrollY;
 
-  // Iterate over each section
   sections.forEach(function (section) {
-    // Get the bounding rectangle of the section
     var rect = section.getBoundingClientRect();
 
-    // Check if the section is in the viewport
     if (rect.top <= 50 && rect.bottom >= 50) {
-      // Get the ID of the current section
       var sectionId = section.getAttribute('id');
 
-      // Update the corresponding navbar link to active
-      var navbarLinkMob = mobileNavMenuCon.querySelector(
-        'a[href="#' + sectionId + '"]'
-      );
-      var navbarLinkDesk = navbarMenuCon.querySelector(
-        'a[href="#' + sectionId + '"]'
-      );
-      if (navbarLinkMob || navbarLinkDesk) {
-        mobileNavMenu.forEach((item, index) => {
-          item.classList.remove('active');
-        });
-        navbarMenu.forEach((item, index) => {
-          item.classList.remove('active');
-        });
+      // Select all links in the navbar
+      var navbarLinks = navbarMenuCon.querySelectorAll('a');
+      var mobileNavbarLinks = mobileNavMenuCon.querySelectorAll('a');
 
-        navbarLinkMob.closest('li').classList.add('active');
-        navbarLinkDesk.closest('li').classList.add('active');
-      }
+      navbarLinks.forEach((link) => {
+        const linkUrl = link.getAttribute('href');
+        const linkEnd = linkUrl.split('/').filter(Boolean).pop(); // Get last part of the URL
+        console.log(linkEnd);
+
+        if (linkEnd === sectionId) {
+          navbarMenu.forEach((item) => item.classList.remove('active'));
+          link.closest('li').classList.add('active');
+        }
+      });
+
+      mobileNavbarLinks.forEach((link) => {
+        const linkUrl = link.getAttribute('href');
+        const linkEnd = linkUrl.split('/').filter(Boolean).pop(); // Get last part of the URL
+
+        if (linkEnd === sectionId) {
+          mobileNavMenu.forEach((item) => item.classList.remove('active'));
+          link.closest('li').classList.add('active');
+        }
+      });
     }
   });
 };
+
 const listenToScroll = function () {
   window.addEventListener('scroll', checkSectionId);
 };
-// change depend on scroll
+
 document.addEventListener('DOMContentLoaded', () => {
   listenToScroll();
   checkSectionId();
@@ -359,3 +359,45 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+let mybutton = document.getElementById('btn-back-to-top');
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = 'block';
+  } else {
+    mybutton.style.display = 'none';
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener('click', backToTop);
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+window.addEventListener('scroll', function () {
+  const footerSection = document.getElementById('footer');
+  const footer = document.getElementById('btn-back-to-top');
+  const arrowUpImage = footer.querySelector('img');
+
+  const footerPosition = footerSection.getBoundingClientRect();
+
+  if (footerPosition.top < window.innerHeight) {
+    if (imageSrc) {
+      arrowUpImage.src = `${imageSrc}/assets/images/arrowup2.svg`;
+      footer.style.backgroundColor = '#F9F5FF';
+    }
+  } else {
+    arrowUpImage.src = `${imageSrc}/assets/images/arrowup.svg`;
+    footer.style.backgroundColor = '#324846';
+  }
+});
+
+
+
+
+

@@ -6,11 +6,12 @@ module.exports = {
       colors: {
         'primary-100': '#e2f9f7',
         primary: '#324846',
-        secondary: '#F9F9F9',
+        secondary: '#C7BAA9',
         neutral: '#7f8897',
         'base-100': '#ffffff',
         'gray': '#e1e1e1',
         'gray-100': "#6B7280",
+        'dark':"#1E293B",
         error: '#FF6C62',
       },
       animation: {

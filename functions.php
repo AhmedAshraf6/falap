@@ -14,7 +14,7 @@
   ** 6/1/2024
 */
 function ahmed_add_styles() {
-  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.9');
+  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.11');
 }
 
 function ahmed_add_scripts() {
@@ -230,7 +230,7 @@ function pageBanner($args = NULL) {
 
   ?>
 
-<section class='h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center mt-24 '
+<section class='h-[30vh] sm:h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center mt-24 '
   style="background-image: url(<?php echo $args['photo']; ?>);">
   <div class='overlay absolute w-full h-full top-0 left-0 bg-primary opacity-90'></div>
   <div class='layout absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[50%] text-base-100'>
