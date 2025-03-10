@@ -8,12 +8,12 @@
 <!-- banner -->
 <section id="ffalab.com">
   <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/banner.svg" alt="image"
-    class="object-cotain w-full  ">
+    class="object-cotain w-full mt-[96px] xl:mt-0">
 </section>
 
 
 <!-- about us -->
-<section class="sm:pt-24 relative">
+<section class="pt-14 lg:pt-24 relative">
   <div class="layout">
     <div class="w-full justify-start items-center gap-8 grid lg:grid-cols-3">
       <div class="w-full flex-col justify-start lg:items-start items-center gap-10 inline-flex lg:col-span-2">
@@ -261,20 +261,7 @@
     <div class="grid md:grid-cols-2 justify-center items-center gap-5">
       <div class="flex flex-col items-center sm:items-start gap-6">
         <h1 class="text-lg sm:text-4xl text-primary ">تواصل معنا</h1>
-        <!-- phone -->
-        <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
-          <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-            <!-- <div
-              class="absolute rounded-full bg-primary text-base-100 flex justify-center items-center w-5 h-5 left-0 z-10">
-              1
-            </div> -->
-            <div
-              class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
-              <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/phone.svg' alt="icon">
-            </div>
-          </div>
-          <a class="text-base sm:text-lg" dir="ltr" href="tel:+966532331339">+966 532 331 339</a>
-        </div>
+
         <!-- mail -->
         <div class="flex flex-col sm:flex-row  items-center gap-3 sm:gap-6">
           <div class="rounded-full w-12 h-12 relative bg-base-100 ">
@@ -289,34 +276,7 @@
           </div>
           <a class="text-base sm:text-lg" href="mailto:info@ffalab.com">info@ffalab.com</a>
         </div>
-        <!-- Address -->
-        <div class="flex flex-col sm:flex-row  items-center gap-3 sm:gap-6">
-          <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-            <div
-              class="absolute rounded-full bg-primary text-base-100 flex justify-center items-center w-5 h-5 left-0 z-10">
-              1
-            </div>
-            <div
-              class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
-              <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/address.svg' alt="icon">
-            </div>
-          </div>
-          <span class="text-sn sm:text-lg">السعودية، الرياض، حي الملقا، طريق الإمام سعود بن فيصل</span>
-        </div>
-        <!-- Address 2 -->
-        <div class="flex flex-col sm:flex-row  items-center gap-3 sm:gap-6">
-          <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-            <div
-              class="absolute rounded-full bg-primary text-base-100 flex justify-center items-center w-5 h-5 left-0 z-10">
-              2
-            </div>
-            <div
-              class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
-              <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/address.svg' alt="icon">
-            </div>
-          </div>
-          <span class="text-sn sm:text-lg">السعودية، الرياض، حي النزهة، طريق الإمام سعود بن عبدالعزيز</span>
-        </div>
+
         <!-- social media -->
         <div class="flex gap-3">
           <div class="flex items-center gap-3 sm:gap-6">
@@ -327,22 +287,8 @@
               </a>
             </div>
           </div>
-          <a href="" target="_blank" class="flex items-center gap-3 sm:gap-6">
-            <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-              <div
-                class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
-                <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/linkedin.svg' alt="icon">
-              </div>
-            </div>
-          </a>
-          <a href="" target="_blank" class="flex items-center gap-3 sm:gap-6">
-            <div class="rounded-full w-12 h-12 relative bg-base-100 ">
-              <div
-                class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
-                <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/youtube.svg' alt="icon">
-              </div>
-            </div>
-          </a>
+
+
           <a href="https://www.instagram.com/ffalab2025/" target="_blank" class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <div
@@ -385,9 +331,7 @@
   <img src='<?php echo get_template_directory_uri(); ?>/assets/images/arrowup.svg' class="w-5 h-5" alt="ArrowUp">
 </button>
 <!-- Whatts app button -->
-<a href="//api.whatsapp.com/send?phone=966532331339" id="whattapBtn" class="animate animate-bounce" target="_blank">
-  <img src='<?php echo get_template_directory_uri(); ?>/assets/images/whatts.svg' class="w-10 h-10" alt="whattsApp">
-</a>
+
 <script>
 const imageSrc = '<?php echo get_template_directory_uri(); ?>';
 </script>

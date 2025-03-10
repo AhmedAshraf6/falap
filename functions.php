@@ -14,7 +14,7 @@
   ** 6/1/2024
 */
 function ahmed_add_styles() {
-  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.11');
+  wp_enqueue_style('myTailwindSetup', get_template_directory_uri() . '/src/output.css',array(),'1.0.17');
 }
 
 function ahmed_add_scripts() {
@@ -230,11 +230,12 @@ function pageBanner($args = NULL) {
 
   ?>
 
-<section class='h-[30vh] sm:h-[50vh] bg-cover bg-no-repeat relative bg-fixed bg-center mt-24 '
+<section class='h-[20vh] sm:h-[30vh] bg-cover bg-no-repeat relative bg-fixed bg-center mt-24 '
   style="background-image: url(<?php echo $args['photo']; ?>);">
   <div class='overlay absolute w-full h-full top-0 left-0 bg-primary opacity-90'></div>
   <div class='layout absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-[50%] text-base-100'>
-    <h3 class='text-2xl sm:text-5xl font-bold capitalize z-20' data-aos='fade-up' data-aos-duration='1000'>
+    <h3 class='text-2xl sm:text-5xl font-bold capitalize z-20 whitespace-nowrap' data-aos='fade-up'
+      data-aos-duration='1000'>
       <?php echo $args['title'] ?>
     </h3>
 
@@ -255,6 +256,7 @@ function handle_experiment_submission() {
     }
 
     $title = sanitize_text_field($_POST['title']);
+    $excerpt = sanitize_textarea_field($_POST['experiment_excerpt']);
     $category = sanitize_text_field($_POST['experiment_category']);
     $purpose = sanitize_textarea_field($_POST['experiment_purpose']);
     $tools = sanitize_textarea_field($_POST['experiment_tool']);
@@ -263,6 +265,7 @@ function handle_experiment_submission() {
 
     $experiment_id = wp_insert_post([
         'post_title'  => $title,
+        'post_excerpt'  => $excerpt, 
         'post_type'   => 'experiment',
         'post_status' => 'pending'
     ]);
@@ -325,9 +328,10 @@ function falab_adjust_queries($query) {
         
 
         // ✅ Filtering "experiment" by "experiment_cat"
-        if (is_post_type_archive('experiment')) {
+        if (is_post_type_archive('experiment') || is_post_type_archive('preparation_library') || is_post_type_archive('library') ) {
            $query->set('orderby', 'title');
-          $query->set('order', 'ASC');
+          $query->set('orderby', 'date');
+          $query->set('order', 'DESC');
           $query->set('posts_per_page', 6);
         }
     }

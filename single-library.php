@@ -73,11 +73,11 @@
         <img
           src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_theme_file_uri('/assets/images/default.jpg'); ?>"
           alt="<?php the_title_attribute(); ?>" class="w-full max-h-[400px] sm:max-h-[500px] object-cover rounded-lg ">
-        <p><?php the_content() ?></p>
+        <div class="generic-content"><?php the_content(); ?></div>
         <?php
         if (!empty($reports) && isset($reports['url'])) {?>
         <div class="flex flex-col gap-2">
-          <h3 class="text-xl font-bold text-primary">تقارير جاهزة :</h3>
+          <h3 class="text-xl font-bold text-primary">ملفات إضافية :</h3>
           <a href="<?php echo esc_url($reports['url']) ?>" download
             class="text-primary underline underline-offset-2">تحميل
             الملفات</a>

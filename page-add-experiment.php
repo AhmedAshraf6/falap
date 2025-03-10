@@ -19,6 +19,7 @@
         <input type="text"
           class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full"
           placeholder="إسم التجربة" name="title" required />
+
         <select class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full"
           name="experiment_category" placeholder="اختر التصنيف">
           <option value="كيمياء">كيمياء</option>
@@ -33,6 +34,9 @@
         <textarea
           class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[150px]"
           placeholder="الأدوات اللازمة" name="experiment_tool"></textarea>
+        <textarea
+          class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[150px]"
+          placeholder="ملخص التجربة" name="experiment_excerpt"></textarea>
       </div>
       <textarea
         class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[200px]"
@@ -119,8 +123,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
 
       <div class="flex flex-col gap-2">

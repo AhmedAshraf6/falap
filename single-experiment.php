@@ -1,25 +1,34 @@
 <?php
- get_header();
-                $video = get_field('experiment_video');
-                $category = get_field('experiment_category');
-                $purpose = get_field('experiment_purpose');
-                $tools = get_field('experiment_tool');
-                $steps = get_field('experiment_steps');
-                $image = get_field('experiment_image');
-                $reports = get_field('experiment_reports');
- 
+get_header();
+
+$video = get_field('experiment_video');
+$category = get_field('experiment_category');
+$purpose = get_field('experiment_purpose');
+$tools = get_field('experiment_tool');
+$steps = get_field('experiment_steps');
+$conclusion = get_field('experiment_consolusion');
+$image = get_the_post_thumbnail_url();
+$reports = get_field('experiment_reports');
+
+// Default image URL
+$default_image = get_theme_file_uri('/assets/images/banner.jpg');
 ?>
 
-
-
-<div class="video-box h-[50vh] lg:h-[80vh] relative ">
+<div class="video-box h-[50vh] lg:h-[80vh] relative">
+  <?php if ($video) : ?>
+  <!-- Display video if available -->
   <video controls class="w-full h-full myVideo object-cover">
-    <source src="<?php  echo esc_url($video['url']); ?>" type="video/mp4">
+    <source src="<?php echo esc_url($video['url']); ?>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
+  <?php elseif ($image) : ?>
+  <!-- Display image if video is not available but image is -->
+  <img src="<?php echo $image ?>" alt="<?php the_title(); ?>" class="w-full h-full object-cover">
+  <?php else : ?>
+  <!-- Display default image if neither video nor image is available -->
+  <img src="<?php echo esc_url($default_image); ?>" alt="Default Banner" class="w-full h-full object-cover">
+  <?php endif; ?>
 </div>
-
 <section class="layout my-10">
 
   <div class="grid lg:grid-cols-4 gap-5">
@@ -83,7 +92,7 @@
         <div class="flex flex-col gap-2">
           <h3 class="text-2xl lg:text-4xl font-bold text-primary"><?php the_title(); ?></h3>
         </div>
-
+        <div class="generic-content"><?php the_content(); ?></div>
         <?php if($purpose){ ?>
         <div class="flex flex-col gap-2">
           <h3 class="text-xl lg:text-3xl font-bold text-primary">الهدف من التجربة :</h3>
@@ -105,10 +114,17 @@
         </div>
         <?php }?>
 
+        <?php if($conclusion){ ?>
+        <div class="flex flex-col gap-2">
+          <h3 class="text-xl lg:text-3xl font-bold text-primary">الاستنتاج :</h3>
+          <p class="text-lg leading-10 "><strong><?php echo $conclusion ?></strong></p>
+        </div>
+        <?php }?>
+
         <?php
         if (!empty($reports) && isset($reports['url'])) {?>
         <div class="flex flex-col gap-2">
-          <h3 class="text-xl font-bold text-primary">تقارير جاهزة :</h3>
+          <h3 class="text-xl font-bold text-primary">ملفات اضافية :</h3>
           <a href="<?php echo esc_url($reports['url']) ?>" download
             class="text-primary underline underline-offset-2">تحميل
             الملفات</a>

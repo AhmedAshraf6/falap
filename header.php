@@ -22,7 +22,7 @@
         class='navbar anaqidNavbar   w-full   bg-base-100  lg:rounded-2xl mx-auto flex justify-between items-center z-20 px-5 sm:px-10 py-2 '>
 
         <a href="<?php echo site_url() ?>" rel="home" class="sm:w-auto sm:h-auto">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/logo.png"
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/logo-1-01.png"
             class="max-w-[200px] max-h-[80px] lg:max-h-[80px] w-auto h-auto object-contain">
         </a>
 

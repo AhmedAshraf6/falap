@@ -19,7 +19,9 @@
           class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full"
           placeholder="إسم الجهاز" name="title" required />
       </div>
-
+      <textarea
+        class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[150px]"
+        placeholder="ملخص التجربة" name="experiment_excerpt"></textarea>
       <textarea
         class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[300px]"
         placeholder="الخطوات" name="experiment_steps"></textarea>

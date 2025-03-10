@@ -76,10 +76,10 @@
             foreach ($pages as $page) {
                 echo '<li>' . str_replace(
                     array('page-numbers current', 'page-numbers', 'prev', 'next'),
-                    array('flex items-center justify-center px-3 h-8 text-base-100 border border-gray-300 bg-primary',
-                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300  ',
-                          'flex items-center justify-center px-3 h-8 ms-0 leading-tight text-base-100 bg-primary border border-e-0 border-gray-300 rounded-s-lg ',
-                          'flex items-center justify-center px-3 h-8 leading-tight text-base-100 bg-primary border border-gray-300 rounded-e-lg '
+                    array('flex items-center justify-center px-4 rounded-full w-8 h-8 text-base-100 border border-gray-300 bg-primary mx-2',
+                          'flex items-center justify-center px-4 rounded-full w-8 h-8 leading-tight text-primary  border border-primary-100 mx-2  ',
+                          'flex items-center justify-center px-4  h-8 ms-0 leading-tight text-primary border-none mx-2 ',
+                          'flex items-center justify-center px-4   h-8 leading-tight text-primary border-none mx-2'
                     ),
                     $page
                 ) . '</li>';

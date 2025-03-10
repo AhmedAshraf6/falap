@@ -31,23 +31,21 @@
     <div
       class="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start  gap-3 order-1 flex-1">
       <div class="flex gap-3">
-        <a href="<?php echo site_url() ?>" class="flex items-center gap-2 order-1">
-          <span class="text-[10px] md:text-sm">الرئيسية</span>
-        </a>
-        <a href="<?php echo site_url() . '/blogs' ?>" class="flex items-center gap-2 order-2">
-          <span class="text-[10px] md:text-sm">المدونة</span>
-        </a>
-        <a href="<?php echo site_url() . '/libraries' ?>" class="flex items-center gap-2 order-3">
+
+        <a href="<?php echo site_url() . '/libraries' ?>" class="flex items-center gap-2 order-2">
           <span class="text-[10px] md:text-sm">المكتبة العلمية</span>
         </a>
+        <a href="<?php echo site_url() . '/preparation-libraries' ?>" class="flex items-center gap-2 order-3">
+          <span class="text-[10px] md:text-sm"> مكتبة محضرة المختبر</span>
+        </a>
       </div>
-      <div class="w-28 block md:hidden order-4">
-        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/الشعار-ابيض.png' alt=" footerLogo"
+      <div class="w-12 block md:hidden order-4">
+        <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/footerLogo-01.svg' alt=" footerLogo"
           class="w-full h-full object-contain mx-auto">
       </div>
     </div>
     <div class="w-28 h-auto md:h-[50px] order-2 hidden md:block flex-1">
-      <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/الشعار-ابيض.png' alt="footerLogo"
+      <img src='<?php echo get_template_directory_uri(); ?>/assets/images/footer/footerLogo-01.svg' alt="footerLogo"
         class="w-full h-full object-contain">
     </div>
     <p class="hidden md:block order-3 flex-1 text-center"> جميع الحقوق محفوظة ل<a href="<?php echo site_url();?>"
