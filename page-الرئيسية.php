@@ -22,7 +22,8 @@
             من نحن
           </h2>
           <p class="text-dark text-xs sm:text-xl font-normal leading-normal lg:text-start text-center">
-            مرحبًا بك في <span class="text-primary font-semibold">مختبر فاطمة</span>، الوجهة الأولى لمحضرات المختبر في
+            مرحبًا بك في <span class="text-primary font-semibold">مختبر فاطمة القحطاني</span>، الوجهة الأولى لمحضرات
+            المختبر في
             مجالات
             الكيمياء،
             الفيزياء،
@@ -34,7 +35,7 @@
 
       </div>
       <img style="height: 400px;" class="lg:mx-0 mx-auto !h-[400px] rounded-3xl object-contain lg:col-span-1"
-        src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-من-نحن-.jpg" alt="about Us image" />
+        src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-من-نحن-.webp" alt="about Us image" />
     </div>
     <div class="mt-3 sm:mt-5">
       <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
@@ -87,22 +88,20 @@
         </div>
       </div>
     </div>
+
     <div class="flex flex-col gap-3 sm:gap-5 mt-5 sm:mt-10">
-      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope  text-center">
+      <h2 class="text-secondary text-lg sm:text-4xl  font-manrope text-center sm:text-start">
         كل تجربة تحتوي على:
       </h2>
-      <div class="grid sm:grid-cols-3 gap-5 text-center ">
-        <p class="text-white text-xs sm:text-xl"> الهدف من التجربة.</p>
-        <p class="text-white text-xs sm:text-xl"> الأدوات المطلوبة.</p>
-        <p class="text-white text-xs sm:text-xl"> خطوات تنفيذ التجربة بالتفصيل.</p>
-
-      </div>
-      <div class="grid sm:grid-cols-2 gap-5 text-center">
-        <p class="text-white text-xs sm:text-xl"> ملاحظات السلامة لضمان إجراء التجربة بأمان.</p>
-        <p class="text-white text-xs sm:text-xl"> نتائج وتحليل البيانات لمساعدة الطلاب على فهم المفاهيم العلمية بشكل
-          تطبيقي.</p>
-      </div>
-
+      <ul class="text-center sm:text-start">
+        <li class="text-white text-xs sm:text-xl"> الهدف من التجربة.</li>
+        <li class="text-white text-xs sm:text-xl mt-2 sm:mt-3"> الأدوات المطلوبة.</li>
+        <li class="text-white text-xs sm:text-xl mt-2 sm:mt-3 "> خطوات تنفيذ التجربة بالتفصيل.</li>
+        <li class="text-white text-xs sm:text-xl mt-2 sm:mt-3 "> ملاحظات السلامة لضمان إجراء التجربة بأمان.</li>
+        <li class="text-white text-xs sm:text-xl mt-2 sm:mt-3 "> نتائج وتحليل البيانات لمساعدة الطلاب على فهم المفاهيم
+          العلمية بشكل
+          تطبيقي.</li>
+      </ul>
     </div>
     <p class="text-sm sm:text-xl font-bold text-secondary text-center mt-5 sm:mt-10">إذا كنتِ محضرة مختبر، يمكنك مشاركة
       تجاربك
@@ -118,7 +117,7 @@
     <div class="grid grid-cols-4 gap-3 sm:gap-5">
       <div class="col-span-1 relative">
         <div class="w-full home-image-wrapper">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-التجارب.jpg" alt="image"
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/home/صورة-التجارب.webp" alt="image"
             class="w-[467px] min-w-[467px] right-[10px] top-[14px]  h-96 object-cover rounded-3xl  absolute z-[1] py-5">
         </div>
       </div>
@@ -185,7 +184,7 @@
       <h2 class="text-secondary text-lg sm:text-4xl  font-manrope text-center sm:text-start">
         ماذا يحتوي هذا القسم
       </h2>
-      <ul>
+      <ul class="text-center sm:text-start">
         <li class="text-xs sm:text-lg text-white">دليل تشغيل الأجهزة المختبرية مثل المجهر، الميزان الحساس، وجهاز الطرد
           المركزي.
         </li>
@@ -250,7 +249,7 @@
 
 <!-- Contact Form  -->
 <section class=" min-h-[700px] mt-14 sm:mt-24 " style="
-      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/contact/shape.webp');
+      background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/contact/shape.svg');
       background-size: 100% 100%;
       background-position:center;
       background-repeat: no-repeat;
@@ -258,7 +257,7 @@
   " id="contact">
   <!-- <img class="absolute " src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/shape.webp' alt=""> -->
   <div class="layout  ">
-    <div class="grid md:grid-cols-2 justify-center items-center gap-5">
+    <div class="grid md:grid-cols-2  md:justify-center items-center gap-5">
       <div class="flex flex-col items-center sm:items-start gap-6">
         <h1 class="text-lg sm:text-4xl text-primary ">تواصل معنا</h1>
 
@@ -270,7 +269,7 @@
               1
             </div> -->
             <div
-              class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
+              class="flex justify-center items-center w-10 h-10  bg-[#EFEAE4] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/mail.svg' alt="icon">
             </div>
           </div>
@@ -282,7 +281,7 @@
           <div class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <a href="https://x.com/?logout=1741465948106" target="_blank"
-                class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
+                class="flex justify-center items-center w-10 h-10  bg-[#EFEAE4] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
                 <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/x.svg' alt="icon">
               </a>
             </div>
@@ -292,7 +291,7 @@
           <a href="https://www.instagram.com/ffalab2025/" target="_blank" class="flex items-center gap-3 sm:gap-6">
             <div class="rounded-full w-12 h-12 relative bg-base-100 ">
               <div
-                class="flex justify-center items-center w-10 h-10  bg-[#F4EBFF] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
+                class="flex justify-center items-center w-10 h-10  bg-[#EFEAE4] rounded-full mb-3 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 absolute ">
                 <img src='<?php echo get_template_directory_uri(); ?>/assets/images/contact/instagram.svg' alt="icon">
               </div>
             </div>

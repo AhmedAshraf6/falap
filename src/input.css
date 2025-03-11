@@ -40,7 +40,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #ffc269;
+  background-color: #324846;
 }
 .navbar .navbar-menu li.active {
   @apply !text-primary;
@@ -70,8 +70,9 @@ body {
   width: 10px; /* Width of the circle */
   height: 10px; /* Height of the circle */
   border-radius: 50%; /* Make it a circle */
-  background-color: #ffc269; /* Color of the circle */
+  background-color: #324846;
 }
+
 .navbar .mobile-navbar-menu li.active a {
   @apply !text-primary;
 }
