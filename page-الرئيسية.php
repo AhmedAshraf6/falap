@@ -317,7 +317,8 @@
           class="border border-solid border-[#324846] placeholder-[#909090] p-2 rounded-md outline-none w-full resize-none h-[300px]"
           placeholder="تفاصيل الرسالة" id="message" name="message" required="required"></textarea>
         <button type="submit" class="btn-primary contactSubmit">إرسال</button>
-        <span class="text-primary font-bold msgContact-sucess">تم ارسال الرسالة إلي شركة فيلاب بنجاح</span>
+        <span class="text-primary font-bold msgContact-sucess">تم الارسال لمختبر فاطمةالقحطاني وسيتم التواصل معكم
+          قريباً</span>
         <span class="text-error font-bold msgContact-error">حدث خطأ ما حاول مرة أخري</span>
       </form>
     </div>
